@@ -21,7 +21,7 @@ AME Bazaar
 
 ## Legal Entity
 
-Maheshwari Enterprises
+Apparel Maheshwari Enterprises
 
 ---
 
