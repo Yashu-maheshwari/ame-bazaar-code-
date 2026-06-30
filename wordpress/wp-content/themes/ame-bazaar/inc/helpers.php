@@ -36,3 +36,324 @@ function ame_bazaar_get_brand_name() {
 
 	return $brand ? $brand : 'AME Bazaar';
 }
+
+/**
+ * Get the central Entity Registry.
+ *
+ * @return array
+ */
+function ame_bazaar_get_entity_registry() {
+	return array(
+		'store'       => array(
+			'label'       => __( 'Clothing Store Overview', 'ame-bazaar' ),
+			'schema_type' => 'ClothingStore',
+			'has_tailor'  => true,
+		),
+		'mens_wear'   => array(
+			'label'       => __( 'Men\'s Wear Department', 'ame-bazaar' ),
+			'schema_type' => 'ClothingStore',
+			'has_tailor'  => true,
+		),
+		'womens_wear' => array(
+			'label'       => __( 'Women\'s Wear Department', 'ame-bazaar' ),
+			'schema_type' => 'ClothingStore',
+			'has_tailor'  => true,
+		),
+		'kids_wear'   => array(
+			'label'       => __( 'Kids\' Wear Department', 'ame-bazaar' ),
+			'schema_type' => 'ClothingStore',
+			'has_tailor'  => false,
+		),
+		'sarees'      => array(
+			'label'       => __( 'Saree Shop Department', 'ame-bazaar' ),
+			'schema_type' => 'ClothingStore',
+			'has_tailor'  => true,
+		),
+		'accessories' => array(
+			'label'       => __( 'Accessories Department', 'ame-bazaar' ),
+			'schema_type' => 'ClothingStore',
+			'has_tailor'  => false,
+		),
+		'tailoring'   => array(
+			'label'       => __( 'Tailoring & Alterations', 'ame-bazaar' ),
+			'schema_type' => 'Service',
+			'has_tailor'  => true,
+		),
+	);
+}
+
+/**
+ * Register post meta keys for local entity pages.
+ */
+function ame_bazaar_register_local_entity_meta() {
+	register_post_meta( 'page', 'ame_local_entity_type', array(
+		'show_in_rest'  => true,
+		'single'        => true,
+		'type'          => 'string',
+		'auth_callback' => function() {
+			return current_user_can( 'edit_posts' );
+		},
+	) );
+
+	register_post_meta( 'page', 'ame_local_buying_guide', array(
+		'show_in_rest'  => true,
+		'single'        => true,
+		'type'          => 'string',
+		'auth_callback' => function() {
+			return current_user_can( 'edit_posts' );
+		},
+	) );
+
+	register_post_meta( 'page', 'ame_local_seasonal_recommendations', array(
+		'show_in_rest'  => true,
+		'single'        => true,
+		'type'          => 'string',
+		'auth_callback' => function() {
+			return current_user_can( 'edit_posts' );
+		},
+	) );
+
+	register_post_meta( 'page', 'ame_local_faqs', array(
+		'show_in_rest'  => array(
+			'schema' => array(
+				'type'  => 'array',
+				'items' => array(
+					'type'       => 'object',
+					'properties' => array(
+						'q' => array( 'type' => 'string' ),
+						'a' => array( 'type' => 'string' ),
+					),
+				),
+			),
+		),
+		'single'        => true,
+		'type'          => 'array',
+		'auth_callback' => function() {
+			return current_user_can( 'edit_posts' );
+		},
+	) );
+
+	// Blog Entity Metadata
+	register_post_meta( 'post', 'ame_last_reviewed_date', array(
+		'show_in_rest'  => true,
+		'single'        => true,
+		'type'          => 'string',
+		'auth_callback' => function() {
+			return current_user_can( 'edit_posts' );
+		},
+	) );
+
+	register_post_meta( 'post', 'ame_author_title', array(
+		'show_in_rest'  => true,
+		'single'        => true,
+		'type'          => 'string',
+		'auth_callback' => function() {
+			return current_user_can( 'edit_posts' );
+		},
+	) );
+
+	register_post_meta( 'post', 'ame_factual_summary', array(
+		'show_in_rest'  => true,
+		'single'        => true,
+		'type'          => 'string',
+		'auth_callback' => function() {
+			return current_user_can( 'edit_posts' );
+		},
+	) );
+
+	register_post_meta( 'post', 'ame_key_takeaways', array(
+		'show_in_rest'  => array(
+			'schema' => array(
+				'type'  => 'array',
+				'items' => array( 'type' => 'string' ),
+			),
+		),
+		'single'        => true,
+		'type'          => 'array',
+		'auth_callback' => function() {
+			return current_user_can( 'edit_posts' );
+		},
+	) );
+
+	register_post_meta( 'post', 'ame_associated_fabric', array(
+		'show_in_rest'  => true,
+		'single'        => true,
+		'type'          => 'string',
+		'auth_callback' => function() {
+			return current_user_can( 'edit_posts' );
+		},
+	) );
+
+	register_post_meta( 'post', 'ame_associated_occasion', array(
+		'show_in_rest'  => true,
+		'single'        => true,
+		'type'          => 'string',
+		'auth_callback' => function() {
+			return current_user_can( 'edit_posts' );
+		},
+	) );
+
+	register_post_meta( 'post', 'ame_associated_season', array(
+		'show_in_rest'  => true,
+		'single'        => true,
+		'type'          => 'string',
+		'auth_callback' => function() {
+			return current_user_can( 'edit_posts' );
+		},
+	) );
+
+	register_post_meta( 'post', 'ame_associated_pillar', array(
+		'show_in_rest'  => true,
+		'single'        => true,
+		'type'          => 'string',
+		'auth_callback' => function() {
+			return current_user_can( 'edit_posts' );
+		},
+	) );
+
+	// FAQ Meta for Posts
+	register_post_meta( 'post', 'ame_local_faqs', array(
+		'show_in_rest'  => array(
+			'schema' => array(
+				'type'  => 'array',
+				'items' => array(
+					'type'       => 'object',
+					'properties' => array(
+						'q' => array( 'type' => 'string' ),
+						'a' => array( 'type' => 'string' ),
+					),
+				),
+			),
+		),
+		'single'        => true,
+		'type'          => 'array',
+		'auth_callback' => function() {
+			return current_user_can( 'edit_posts' );
+		},
+	) );
+}
+add_action( 'init', 'ame_bazaar_register_local_entity_meta' );
+
+/**
+ * Generate semantic HTML navigation links for registered local entities.
+ *
+ * @return string HTML output.
+ */
+function ame_bazaar_get_local_entity_links_html() {
+	$registry = ame_bazaar_get_entity_registry();
+	$current_id = get_the_ID();
+
+	// Query pages with local entity type meta key
+	$query = new WP_Query( array(
+		'post_type'      => 'page',
+		'posts_per_page' => 20,
+		'post_status'    => 'publish',
+		'meta_query'     => array(
+			array(
+				'key'     => 'ame_local_entity_type',
+				'compare' => 'EXISTS',
+			),
+		),
+	) );
+
+	if ( ! $query->have_posts() ) {
+		return '';
+	}
+
+	$html = '<ul class="ame-local-entity-nav-list">';
+	while ( $query->have_posts() ) {
+		$query->the_post();
+		$entity_key = get_post_meta( get_the_ID(), 'ame_local_entity_type', true );
+
+		// Skip if not in the registry
+		if ( ! isset( $registry[ $entity_key ] ) ) {
+			continue;
+		}
+
+		$is_current = ( get_the_ID() === $current_id );
+		$active_class = $is_current ? ' class="current-menu-item"' : '';
+		$aria_current = $is_current ? ' aria-current="page"' : '';
+
+		$html .= sprintf(
+			'<li%s><a href="%s"%s>%s</a></li>',
+			$active_class,
+			esc_url( get_permalink() ),
+			$aria_current,
+			esc_html( get_the_title() )
+		);
+	}
+	wp_reset_postdata();
+	$html .= '</ul>';
+
+	return $html;
+}
+
+/**
+ * Calculate estimated reading time for content.
+ *
+ * @param string $content The text content.
+ * @return int Minutes count.
+ */
+function ame_bazaar_calculate_reading_time( $content ) {
+	$words_per_minute = 200;
+	$word_count       = str_word_count( wp_strip_all_tags( $content ) );
+	$minutes          = ceil( $word_count / $words_per_minute );
+
+	return max( 1, $minutes );
+}
+
+/**
+ * Filter post content to automatically add ID anchors to H2 headings.
+ *
+ * @param string $content The content string.
+ * @return string Filtered content.
+ */
+function ame_bazaar_toc_content_filter( $content ) {
+	if ( ! is_singular( 'post' ) ) {
+		return $content;
+	}
+
+	$content = preg_replace_callback( '/<h2(.*?)>(.*?)<\/h2>/i', function( $matches ) {
+		$attrs = $matches[1];
+		$title = $matches[2];
+
+		if ( stripos( $attrs, 'id=' ) !== false ) {
+			return $matches[0];
+		}
+
+		$id = sanitize_title( wp_strip_all_tags( $title ) );
+
+		return sprintf( '<h2 id="%s"%s>%s</h2>', esc_attr( $id ), $attrs, $title );
+	}, $content );
+
+	return $content;
+}
+add_filter( 'the_content', 'ame_bazaar_toc_content_filter', 9 );
+
+/**
+ * Generate a semantic HTML Table of Contents for post content.
+ *
+ * @param string $content The content string.
+ * @return string HTML output.
+ */
+function ame_bazaar_generate_toc_html( $content ) {
+	preg_match_all( '/<h2.*?>(.*?)<\/h2>/i', $content, $matches );
+	if ( empty( $matches[1] ) ) {
+		return '';
+	}
+
+	$html  = '<nav class="ame-toc-nav" aria-label="' . esc_attr__( 'Table of contents', 'ame-bazaar' ) . '">';
+	$html .= '<h3 class="ame-toc-title">' . esc_html__( 'Table of Contents', 'ame-bazaar' ) . '</h3>';
+	$html .= '<ul class="ame-toc-list">';
+	foreach ( $matches[1] as $title ) {
+		$clean_title = wp_strip_all_tags( $title );
+		$id          = sanitize_title( $clean_title );
+		$html       .= sprintf( '<li><a href="#%s">%s</a></li>', esc_attr( $id ), esc_html( $clean_title ) );
+	}
+	$html .= '</ul>';
+	$html .= '</nav>';
+
+	return $html;
+}
+
+
