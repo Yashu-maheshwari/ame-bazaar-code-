@@ -30,18 +30,6 @@ $maps_url = get_theme_mod( 'ame_bazaar_maps_url', 'https://maps.google.com/?q=AM
 		<!-- Hero Content Left -->
 		<div class="ame-hero-content">
 			
-			<!-- Trust Rating Badge -->
-			<div class="ame-hero-rating-badge" aria-label="<?php esc_attr_e( 'Rated 4.8 Stars on Google Reviews', 'ame-bazaar' ); ?>">
-				<div class="ame-stars" aria-hidden="true">
-					<?php for ( $i = 0; $i < 5; $i++ ) : ?>
-						<svg class="ame-star-icon" viewBox="0 0 24 24" fill="currentColor">
-							<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-						</svg>
-					<?php endfor; ?>
-				</div>
-				<span class="ame-rating-text"><?php esc_html_e( '4.8+ Rating (100+ Reviews)', 'ame-bazaar' ); ?></span>
-			</div>
-
 			<!-- Main Headline (SEO optimized h1, only one per page) -->
 			<h1 class="ame-hero-headline"><?php echo esc_html( $hero_title ); ?></h1>
 			
@@ -65,25 +53,31 @@ $maps_url = get_theme_mod( 'ame_bazaar_maps_url', 'https://maps.google.com/?q=AM
 				</a>
 			</div>
 
-			<!-- Trust Grid Section -->
-			<div class="ame-hero-trust-grid">
+			<!-- Trust Row Section -->
+			<div class="ame-hero-trust-row">
 				<div class="ame-trust-item">
-					<svg class="ame-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-						<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+					<svg class="ame-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+						<polyline points="20 6 9 17 4 12"></polyline>
 					</svg>
-					<span class="ame-trust-text"><?php esc_html_e( 'Family-Owned Business', 'ame-bazaar' ); ?></span>
+					<span class="ame-trust-text"><?php esc_html_e( 'Family-owned business', 'ame-bazaar' ); ?></span>
 				</div>
 				<div class="ame-trust-item">
-					<svg class="ame-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-						<line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+					<svg class="ame-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+						<polyline points="20 6 9 17 4 12"></polyline>
 					</svg>
-					<span class="ame-trust-text"><?php esc_html_e( 'Affordable Family Fashion', 'ame-bazaar' ); ?></span>
+					<span class="ame-trust-text"><?php esc_html_e( 'Affordable Fashion', 'ame-bazaar' ); ?></span>
 				</div>
 				<div class="ame-trust-item">
-					<svg class="ame-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-						<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+					<svg class="ame-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+						<polyline points="20 6 9 17 4 12"></polyline>
 					</svg>
 					<span class="ame-trust-text"><?php esc_html_e( 'Tailoring Available', 'ame-bazaar' ); ?></span>
+				</div>
+				<div class="ame-trust-item">
+					<svg class="ame-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+						<polyline points="20 6 9 17 4 12"></polyline>
+					</svg>
+					<span class="ame-trust-text"><?php esc_html_e( '4.8+ Google Rating', 'ame-bazaar' ); ?></span>
 				</div>
 			</div>
 
