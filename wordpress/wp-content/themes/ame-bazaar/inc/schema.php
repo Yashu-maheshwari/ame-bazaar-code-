@@ -65,8 +65,9 @@ function ame_bazaar_get_clothing_store_schema() {
 	$country = get_theme_mod( 'ame_bazaar_country', 'IN' );
 	
 	// Additional info
-	$hours        = get_theme_mod( 'ame_bazaar_store_hours', 'Mo-Su 10:00-21:00' );
-	$areas_served = get_theme_mod( 'ame_bazaar_areas_served', 'Kirari, Baljit Vihar, Prem Nagar, Delhi' );
+	$hours        = get_theme_mod( 'ame_bazaar_store_hours', 'Mo-Su 09:00-22:00' );
+	$areas_served = get_theme_mod( 'ame_bazaar_areas_served', 'Kirari, Mubarakpur, Meer Vihar, Baljit Vihar, Prem Nagar, Nangloi, Budh Vihar, Rohini' );
+	$price_range  = get_theme_mod( 'ame_bazaar_price_range', '₹100 to ₹1000' );
 	$facebook     = get_theme_mod( 'ame_bazaar_facebook_url', 'https://www.facebook.com/amebazaar' );
 	$instagram    = get_theme_mod( 'ame_bazaar_instagram_url', 'https://www.instagram.com/amebazaar' );
 
@@ -77,7 +78,7 @@ function ame_bazaar_get_clothing_store_schema() {
 		'name'         => $brand_name,
 		'url'          => home_url( '/' ),
 		'telephone'    => $phone,
-		'priceRange'   => '$$',
+		'priceRange'   => $price_range,
 		'hasMap'       => $maps_url,
 		'address'      => array(
 			'@type'           => 'PostalAddress',

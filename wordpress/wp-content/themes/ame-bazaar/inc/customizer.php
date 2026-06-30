@@ -609,14 +609,27 @@ function ame_bazaar_customize_register( $wp_customize ) {
 
 	// Store hours (Schema format)
 	$wp_customize->add_setting( 'ame_bazaar_store_hours', array(
-		'default'           => 'Mo-Su 10:00-21:00',
+		'default'           => 'Mo-Su 09:00-22:00',
 		'sanitize_callback' => 'sanitize_text_field',
 		'transport'         => 'refresh',
 	) );
 	$wp_customize->add_control( 'ame_bazaar_store_hours_control', array(
-		'label'    => __( 'Schema Opening Hours (e.g. Mo-Su 10:00-21:00)', 'ame-bazaar' ),
+		'label'    => __( 'Schema Opening Hours (e.g. Mo-Su 09:00-22:00)', 'ame-bazaar' ),
 		'section'  => 'ame_bazaar_schema_section',
 		'settings' => 'ame_bazaar_store_hours',
+		'type'     => 'text',
+	) );
+
+	// Price Range setting
+	$wp_customize->add_setting( 'ame_bazaar_price_range', array(
+		'default'           => '₹100 to ₹1000',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'ame_bazaar_price_range_control', array(
+		'label'    => __( 'Price Range (e.g. ₹100 to ₹1000)', 'ame-bazaar' ),
+		'section'  => 'ame_bazaar_schema_section',
+		'settings' => 'ame_bazaar_price_range',
 		'type'     => 'text',
 	) );
 
@@ -647,7 +660,7 @@ function ame_bazaar_customize_register( $wp_customize ) {
 
 	// Areas Served
 	$wp_customize->add_setting( 'ame_bazaar_areas_served', array(
-		'default'           => 'Kirari, Baljit Vihar, Prem Nagar, Delhi',
+		'default'           => 'Kirari, Mubarakpur, Meer Vihar, Baljit Vihar, Prem Nagar, Nangloi, Budh Vihar, Rohini',
 		'sanitize_callback' => 'sanitize_text_field',
 		'transport'         => 'refresh',
 	) );
