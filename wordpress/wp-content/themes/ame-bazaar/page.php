@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 ?>
 <main id="primary" class="site-main" role="main">
+	<?php get_template_part( 'components/breadcrumbs/breadcrumbs' ); ?>
 	<div class="ame-bazaar-container ame-bazaar-section">
 		<?php
 		while ( have_posts() ) :
