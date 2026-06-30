@@ -264,6 +264,14 @@ function ame_bazaar_output_schema() {
 		$graph[] = $store;
 	}
 
+	// 3b. BlogPosting / Article Entity (Single Posts Only)
+	if ( is_singular( 'post' ) ) {
+		$article = ame_bazaar_get_article_schema();
+		if ( $article ) {
+			$graph[] = $article;
+		}
+	}
+
 	// 4. Breadcrumbs Entity
 	$breadcrumbs = ame_bazaar_get_breadcrumb_schema();
 	if ( $breadcrumbs ) {
@@ -288,3 +296,44 @@ function ame_bazaar_output_schema() {
 	echo '<script type="application/ld+json">' . wp_json_encode( $output, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
 }
 add_action( 'wp_head', 'ame_bazaar_output_schema', 20 );
+
+/**
+ * Get BlogPosting / Article entity schema for single blog posts.
+ *
+ * @return array|bool
+ */
+function ame_bazaar_get_article_schema() {
+	if ( ! is_singular( 'post' ) ) {
+		return false;
+	}
+
+	$schema = array(
+		'@type'            => 'BlogPosting',
+		'@id'              => get_permalink() . '#article',
+		'isPartOf'         => array(
+			'@id' => home_url( '/#website' ),
+		),
+		'mainEntityOfPage' => get_permalink(),
+		'headline'         => get_the_title(),
+		'datePublished'    => get_the_date( 'c' ),
+		'dateModified'     => get_the_modified_date( 'c' ),
+		'author'           => array(
+			'@type' => 'Person',
+			'name'  => get_the_author(),
+			'url'   => get_author_posts_url( get_the_author_meta( 'ID' ) ),
+		),
+		'publisher'        => array(
+			'@id' => home_url( '/#organization' ),
+		),
+		'description'      => wp_strip_all_tags( get_the_excerpt() ),
+	);
+
+	if ( has_post_thumbnail() ) {
+		$schema['image'] = array(
+			'@type' => 'ImageObject',
+			'url'   => get_the_post_thumbnail_url( null, 'full' ),
+		);
+	}
+
+	return apply_filters( 'ame_bazaar_article_schema', $schema );
+}
