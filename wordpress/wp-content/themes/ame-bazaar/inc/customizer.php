@@ -538,5 +538,124 @@ function ame_bazaar_customize_register( $wp_customize ) {
 			'type'     => 'textarea',
 		) );
 	}
+
+	// Add Section for Schema & Socials
+	$wp_customize->add_section( 'ame_bazaar_schema_section', array(
+		'title'       => __( 'AME Bazaar Schema & Socials Settings', 'ame-bazaar' ),
+		'priority'    => 90,
+		'description' => __( 'Configure structured schema details and social profiles.', 'ame-bazaar' ),
+	) );
+
+	// Address line settings
+	$wp_customize->add_setting( 'ame_bazaar_street_address', array(
+		'default'           => 'Mubarakpur Road',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'ame_bazaar_street_address_control', array(
+		'label'    => __( 'Street Address', 'ame-bazaar' ),
+		'section'  => 'ame_bazaar_schema_section',
+		'settings' => 'ame_bazaar_street_address',
+		'type'     => 'text',
+	) );
+
+	$wp_customize->add_setting( 'ame_bazaar_locality', array(
+		'default'           => 'Kirari',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'ame_bazaar_locality_control', array(
+		'label'    => __( 'City / Locality', 'ame-bazaar' ),
+		'section'  => 'ame_bazaar_schema_section',
+		'settings' => 'ame_bazaar_locality',
+		'type'     => 'text',
+	) );
+
+	$wp_customize->add_setting( 'ame_bazaar_region', array(
+		'default'           => 'Delhi',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'ame_bazaar_region_control', array(
+		'label'    => __( 'State / Region', 'ame-bazaar' ),
+		'section'  => 'ame_bazaar_schema_section',
+		'settings' => 'ame_bazaar_region',
+		'type'     => 'text',
+	) );
+
+	$wp_customize->add_setting( 'ame_bazaar_postal_code', array(
+		'default'           => '110086',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'ame_bazaar_postal_code_control', array(
+		'label'    => __( 'Postal Code', 'ame-bazaar' ),
+		'section'  => 'ame_bazaar_schema_section',
+		'settings' => 'ame_bazaar_postal_code',
+		'type'     => 'text',
+	) );
+
+	$wp_customize->add_setting( 'ame_bazaar_country', array(
+		'default'           => 'IN',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'ame_bazaar_country_control', array(
+		'label'    => __( 'Country Code (e.g. IN)', 'ame-bazaar' ),
+		'section'  => 'ame_bazaar_schema_section',
+		'settings' => 'ame_bazaar_country',
+		'type'     => 'text',
+	) );
+
+	// Store hours (Schema format)
+	$wp_customize->add_setting( 'ame_bazaar_store_hours', array(
+		'default'           => 'Mo-Su 10:00-21:00',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'ame_bazaar_store_hours_control', array(
+		'label'    => __( 'Schema Opening Hours (e.g. Mo-Su 10:00-21:00)', 'ame-bazaar' ),
+		'section'  => 'ame_bazaar_schema_section',
+		'settings' => 'ame_bazaar_store_hours',
+		'type'     => 'text',
+	) );
+
+	// Social profile URLs
+	$wp_customize->add_setting( 'ame_bazaar_facebook_url', array(
+		'default'           => 'https://www.facebook.com/amebazaar',
+		'sanitize_callback' => 'esc_url_raw',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'ame_bazaar_facebook_url_control', array(
+		'label'    => __( 'Facebook Profile URL', 'ame-bazaar' ),
+		'section'  => 'ame_bazaar_schema_section',
+		'settings' => 'ame_bazaar_facebook_url',
+		'type'     => 'url',
+	) );
+
+	$wp_customize->add_setting( 'ame_bazaar_instagram_url', array(
+		'default'           => 'https://www.instagram.com/amebazaar',
+		'sanitize_callback' => 'esc_url_raw',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'ame_bazaar_instagram_url_control', array(
+		'label'    => __( 'Instagram Profile URL', 'ame-bazaar' ),
+		'section'  => 'ame_bazaar_schema_section',
+		'settings' => 'ame_bazaar_instagram_url',
+		'type'     => 'url',
+	) );
+
+	// Areas Served
+	$wp_customize->add_setting( 'ame_bazaar_areas_served', array(
+		'default'           => 'Kirari, Baljit Vihar, Prem Nagar, Delhi',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'ame_bazaar_areas_served_control', array(
+		'label'    => __( 'Areas Served (Comma-separated)', 'ame-bazaar' ),
+		'section'  => 'ame_bazaar_schema_section',
+		'settings' => 'ame_bazaar_areas_served',
+		'type'     => 'text',
+	) );
 }
 add_action( 'customize_register', 'ame_bazaar_customize_register' );
