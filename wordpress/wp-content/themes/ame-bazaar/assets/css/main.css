@@ -6,6 +6,7 @@
 :root {
 	--ame-color-navy: #002347;
 	--ame-color-gold: #d4af37;
+	--ame-color-gold-dark: #916c02;
 	--ame-color-cream: #f8f7f4;
 	--ame-color-white: #ffffff;
 	--ame-color-slate: #334155;
@@ -421,7 +422,7 @@
 
 .ame-mobile-menu-list a:hover,
 .ame-mobile-menu-list .current-menu-item > a {
-	color: var(--ame-color-gold);
+	color: var(--ame-color-gold-dark);
 }
 
 /* Drawer Footer */
@@ -647,7 +648,7 @@
 
 /* ==========================================================================
    SHOP BY CATEGORY COMPONENT STYLES
-   ========================================================================= */
+   ========================================================================== */
 .ame-categories-section {
 	padding-block: clamp(4rem, 8vw, 6rem);
 	background: var(--ame-color-white);
@@ -795,7 +796,7 @@
 }
 
 .ame-category-title-link:hover {
-	color: var(--ame-color-gold);
+	color: var(--ame-color-gold-dark);
 }
 
 .ame-category-card-desc {
@@ -1570,7 +1571,7 @@
 }
 
 .ame-breadcrumb-link:hover {
-	color: var(--ame-color-gold);
+	color: var(--ame-color-gold-dark);
 }
 
 .ame-breadcrumb-separator {
@@ -1696,7 +1697,7 @@
 }
 
 .ame-blog-card-cat-link {
-	color: var(--ame-color-gold);
+	color: var(--ame-color-gold-dark);
 	text-decoration: none;
 }
 
@@ -1723,7 +1724,7 @@
 }
 
 .ame-blog-card-title-link:hover {
-	color: var(--ame-color-gold);
+	color: var(--ame-color-gold-dark);
 }
 
 .ame-blog-card-excerpt {
@@ -1752,7 +1753,7 @@
 }
 
 .ame-blog-card-read-more:hover {
-	color: var(--ame-color-gold);
+	color: var(--ame-color-gold-dark);
 }
 
 .ame-blog-card-read-more .ame-arrow-icon {
@@ -1897,7 +1898,7 @@
 }
 
 .ame-author-name-link:hover {
-	color: var(--ame-color-gold);
+	color: var(--ame-color-gold-dark);
 }
 
 .ame-blog-post-featured-image-wrap {
@@ -2002,7 +2003,7 @@
 	font-size: 0.7rem;
 	font-weight: 700;
 	text-transform: uppercase;
-	color: var(--ame-color-gold);
+	color: var(--ame-color-gold-dark);
 	letter-spacing: 0.05em;
 	margin-bottom: 0.4rem;
 }
@@ -2020,7 +2021,7 @@
 }
 
 .ame-author-link:hover {
-	color: var(--ame-color-gold);
+	color: var(--ame-color-gold-dark);
 }
 
 .ame-author-bio {
@@ -2061,7 +2062,7 @@
 }
 
 .ame-internal-linking-text a:hover {
-	color: var(--ame-color-gold);
+	color: var(--ame-color-gold-dark);
 }
 
 .ame-internal-linking-actions {
@@ -2185,7 +2186,7 @@
 }
 
 .ame-related-article-title-link:hover {
-	color: var(--ame-color-gold);
+	color: var(--ame-color-gold-dark);
 }
 
 /* ==========================================================================
@@ -2355,7 +2356,7 @@
 }
 
 .ame-404-dept-link:hover .ame-dept-arrow {
-	color: var(--ame-color-gold);
+	color: var(--ame-color-gold-dark);
 	transform: translateX(4px);
 }
 
@@ -2396,7 +2397,7 @@
 }
 
 .ame-404-call-link:hover {
-	color: var(--ame-color-gold);
+	color: var(--ame-color-gold-dark);
 }
 
 /* Header summary spacing on active search */
@@ -2463,7 +2464,7 @@
 	font-size: 0.75rem;
 	font-weight: 700;
 	text-transform: uppercase;
-	color: var(--ame-color-gold);
+	color: var(--ame-color-gold-dark);
 	letter-spacing: 0.08em;
 	margin-bottom: 0.5rem;
 }
@@ -2592,7 +2593,7 @@
 }
 
 .ame-product-title-link:hover {
-	color: var(--ame-color-gold);
+	color: var(--ame-color-gold-dark);
 }
 
 .ame-product-price {
@@ -2622,7 +2623,7 @@
 }
 
 .ame-product-placeholder-link:hover {
-	color: var(--ame-color-gold);
+	color: var(--ame-color-gold-dark);
 }
 
 /* FAQ Accordion Block */

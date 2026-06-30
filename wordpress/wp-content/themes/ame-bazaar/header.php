@@ -22,8 +22,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 <a class="screen-reader-text skip-link" href="#primary"><?php esc_html_e( 'Skip to content', 'ame-bazaar' ); ?></a>
 <?php do_action( 'ame_bazaar_before_header' ); ?>
 <header id="masthead" class="site-header ame-bazaar-site-header" role="banner">
-	<div class="ame-bazaar-container">
-		<?php do_action( 'ame_bazaar_header' ); ?>
-	</div>
+	<?php do_action( 'ame_bazaar_header' ); ?>
 </header>
 <?php do_action( 'ame_bazaar_after_header' ); ?>

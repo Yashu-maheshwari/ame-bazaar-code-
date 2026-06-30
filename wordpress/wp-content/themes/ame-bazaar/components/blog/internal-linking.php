@@ -25,7 +25,7 @@ $cat_acc     = get_theme_mod( 'ame_bazaar_cat_accessories_url', '#' );
 			esc_url( $cat_men ),
 			esc_url( $cat_women ),
 			esc_url( $cat_kids ),
-			esc_url( home_url( '/#about-business' ) )
+			esc_url( home_url( '/#ame-about-business-title' ) )
 		); ?>
 	</p>
 	<div class="ame-internal-linking-actions">

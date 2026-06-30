@@ -244,6 +244,11 @@ function ame_bazaar_output_schema() {
 		return;
 	}
 
+	// Bypass theme schema entirely if Rank Math, Yoast SEO, or SEOPress is active.
+	if ( class_exists( 'RankMath' ) || defined( 'WPSEO_VERSION' ) || class_exists( 'WPSEO_Frontend' ) || defined( 'SEOPRESS_VERSION' ) ) {
+		return;
+	}
+
 	$graph = array();
 
 	// 1. WebSite Entity

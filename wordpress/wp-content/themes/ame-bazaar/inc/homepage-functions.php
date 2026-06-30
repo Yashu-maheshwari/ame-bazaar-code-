@@ -27,12 +27,6 @@ function ame_bazaar_render_why_choose_us() {
 }
 add_action( 'ame_bazaar_homepage', 'ame_bazaar_render_why_choose_us', 30 );
 
-// 4. Featured Collections
-function ame_bazaar_render_featured_collections() {
-	get_template_part( 'components/featured-collections/featured-collections' );
-}
-add_action( 'ame_bazaar_homepage', 'ame_bazaar_render_featured_collections', 40 );
-
 // 5. Customer Reviews
 function ame_bazaar_render_reviews() {
 	get_template_part( 'components/reviews/reviews' );
@@ -44,9 +38,3 @@ function ame_bazaar_render_about_business() {
 	get_template_part( 'components/about-business/about-business' );
 }
 add_action( 'ame_bazaar_homepage', 'ame_bazaar_render_about_business', 55 );
-
-// 6. Call To Action
-function ame_bazaar_render_cta() {
-	get_template_part( 'components/cta/cta' );
-}
-add_action( 'ame_bazaar_homepage', 'ame_bazaar_render_cta', 60 );
