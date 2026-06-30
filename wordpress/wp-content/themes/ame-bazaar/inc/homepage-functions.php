@@ -39,6 +39,12 @@ function ame_bazaar_render_reviews() {
 }
 add_action( 'ame_bazaar_homepage', 'ame_bazaar_render_reviews', 50 );
 
+// 5b. About AME Bazaar & Local Info
+function ame_bazaar_render_about_business() {
+	get_template_part( 'components/about-business/about-business' );
+}
+add_action( 'ame_bazaar_homepage', 'ame_bazaar_render_about_business', 55 );
+
 // 6. Call To Action
 function ame_bazaar_render_cta() {
 	get_template_part( 'components/cta/cta' );

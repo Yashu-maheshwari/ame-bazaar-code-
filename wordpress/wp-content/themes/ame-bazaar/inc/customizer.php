@@ -437,5 +437,106 @@ function ame_bazaar_customize_register( $wp_customize ) {
 			'type'     => 'textarea',
 		) );
 	}
+
+	// Add Section for About & Local Info
+	$wp_customize->add_section( 'ame_bazaar_about_section', array(
+		'title'       => __( 'AME Bazaar About Section Settings', 'ame-bazaar' ),
+		'priority'    => 80,
+		'description' => __( 'Configure the About AME Bazaar & Local Info homepage section.', 'ame-bazaar' ),
+	) );
+
+	// Section Title & Subtitle
+	$wp_customize->add_setting( 'ame_bazaar_about_section_title', array(
+		'default'           => 'About AME Bazaar',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'ame_bazaar_about_section_title_control', array(
+		'label'    => __( 'Section Title', 'ame-bazaar' ),
+		'section'  => 'ame_bazaar_about_section',
+		'settings' => 'ame_bazaar_about_section_title',
+		'type'     => 'text',
+	) );
+
+	$wp_customize->add_setting( 'ame_bazaar_about_section_subtitle', array(
+		'default'           => 'Discover our heritage, collections, and values as a trusted local family store.',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'ame_bazaar_about_section_subtitle_control', array(
+		'label'    => __( 'Section Subtitle', 'ame-bazaar' ),
+		'section'  => 'ame_bazaar_about_section',
+		'settings' => 'ame_bazaar_about_section_subtitle',
+		'type'     => 'text',
+	) );
+
+	// Story Headline & Content
+	$wp_customize->add_setting( 'ame_bazaar_about_story_headline', array(
+		'default'           => 'Apparel Maheshwari Enterprises - Rooted in Trust',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'ame_bazaar_about_story_headline_control', array(
+		'label'    => __( 'Story Headline', 'ame-bazaar' ),
+		'section'  => 'ame_bazaar_about_section',
+		'settings' => 'ame_bazaar_about_story_headline',
+		'type'     => 'text',
+	) );
+
+	$wp_customize->add_setting( 'ame_bazaar_about_story_content', array(
+		'default'           => 'Located on Mubarakpur Road in Kirari, Delhi, AME Bazaar is dedicated to providing high-quality garments for your entire family. We offer premium Men\'s Wear, Women\'s Wear, Kids\' Wear, Sarees, and fashion Accessories. In addition, our in-store tailoring and alterations service ensures a custom fit for every customer. We encourage you to visit our store for a premium minimal shopping experience.',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'ame_bazaar_about_story_content_control', array(
+		'label'    => __( 'Story Description Content', 'ame-bazaar' ),
+		'section'  => 'ame_bazaar_about_section',
+		'settings' => 'ame_bazaar_about_story_content',
+		'type'     => 'textarea',
+	) );
+
+	// FAQ 1, 2, 3 questions & answers
+	$faqs = array(
+		1 => array(
+			'q' => 'Where is AME Bazaar located in Delhi?',
+			'a' => 'We are located on Mubarakpur Road in Kirari, Delhi, making us easily accessible for shoppers from Baljit Vihar, Prem Nagar, and nearby Delhi areas.',
+		),
+		2 => array(
+			'q' => 'What clothing ranges do you specialize in?',
+			'a' => 'We specialize in family apparel including Men\'s Wear, Women\'s Wear, Kids\' Wear, traditional Sarees, and everyday fashion Accessories.',
+		),
+		3 => array(
+			'q' => 'Do you provide custom alterations and tailoring?',
+			'a' => 'Yes, we have an in-store tailoring and alterations service to customize fittings for your purchases, ensuring comfortable wear.',
+		),
+	);
+
+	foreach ( $faqs as $index => $faq ) {
+		// Q setting
+		$wp_customize->add_setting( 'ame_bazaar_about_faq' . $index . '_q', array(
+			'default'           => $faq['q'],
+			'sanitize_callback' => 'sanitize_text_field',
+			'transport'         => 'refresh',
+		) );
+		$wp_customize->add_control( 'ame_bazaar_about_faq' . $index . '_q_control', array(
+			'label'    => sprintf( __( 'FAQ %d Question', 'ame-bazaar' ), $index ),
+			'section'  => 'ame_bazaar_about_section',
+			'settings' => 'ame_bazaar_about_faq' . $index . '_q',
+			'type'     => 'text',
+		) );
+
+		// A setting
+		$wp_customize->add_setting( 'ame_bazaar_about_faq' . $index . '_a', array(
+			'default'           => $faq['a'],
+			'sanitize_callback' => 'sanitize_text_field',
+			'transport'         => 'refresh',
+		) );
+		$wp_customize->add_control( 'ame_bazaar_about_faq' . $index . '_a_control', array(
+			'label'    => sprintf( __( 'FAQ %d Answer', 'ame-bazaar' ), $index ),
+			'section'  => 'ame_bazaar_about_section',
+			'settings' => 'ame_bazaar_about_faq' . $index . '_a',
+			'type'     => 'textarea',
+		) );
+	}
 }
 add_action( 'customize_register', 'ame_bazaar_customize_register' );
