@@ -670,5 +670,51 @@ function ame_bazaar_customize_register( $wp_customize ) {
 		'settings' => 'ame_bazaar_areas_served',
 		'type'     => 'text',
 	) );
+
+	// Add Section for Footer Settings
+	$wp_customize->add_section( 'ame_bazaar_footer_section', array(
+		'title'       => __( 'AME Bazaar Footer Settings', 'ame-bazaar' ),
+		'priority'    => 100,
+		'description' => __( 'Configure footer text and contact links.', 'ame-bazaar' ),
+	) );
+
+	// Footer About Text
+	$wp_customize->add_setting( 'ame_bazaar_footer_about', array(
+		'default'           => 'Apparel Maheshwari Enterprises (AME Bazaar) offers premium fashion apparel for the entire family. Visit our store on Mubarakpur Road, Kirari, Delhi.',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'ame_bazaar_footer_about_control', array(
+		'label'    => __( 'Footer Brand Description', 'ame-bazaar' ),
+		'section'  => 'ame_bazaar_footer_section',
+		'settings' => 'ame_bazaar_footer_about',
+		'type'     => 'textarea',
+	) );
+
+	// WhatsApp URL
+	$wp_customize->add_setting( 'ame_bazaar_whatsapp_url', array(
+		'default'           => 'https://wa.me/919999999999?text=Hello%20AME%20Bazaar%2C%20I%20have%20an%20inquiry',
+		'sanitize_callback' => 'esc_url_raw',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'ame_bazaar_whatsapp_url_control', array(
+		'label'    => __( 'WhatsApp Click-to-Chat URL', 'ame-bazaar' ),
+		'section'  => 'ame_bazaar_footer_section',
+		'settings' => 'ame_bazaar_whatsapp_url',
+		'type'     => 'url',
+	) );
+
+	// Store Email
+	$wp_customize->add_setting( 'ame_bazaar_email', array(
+		'default'           => 'contact@amebazaar.com',
+		'sanitize_callback' => 'sanitize_email',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'ame_bazaar_email_control', array(
+		'label'    => __( 'Store Email Address', 'ame-bazaar' ),
+		'section'  => 'ame_bazaar_footer_section',
+		'settings' => 'ame_bazaar_email',
+		'type'     => 'text',
+	) );
 }
 add_action( 'customize_register', 'ame_bazaar_customize_register' );

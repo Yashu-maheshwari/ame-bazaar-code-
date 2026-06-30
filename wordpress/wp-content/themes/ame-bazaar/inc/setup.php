@@ -59,3 +59,11 @@ function ame_bazaar_render_header() {
 	get_template_part( 'components/header/header' );
 }
 add_action( 'ame_bazaar_header', 'ame_bazaar_render_header' );
+
+/**
+ * Render the footer template part.
+ */
+function ame_bazaar_render_footer() {
+	get_template_part( 'components/footer/footer' );
+}
+add_action( 'ame_bazaar_footer', 'ame_bazaar_render_footer' );
