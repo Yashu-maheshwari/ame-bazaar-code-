@@ -38,7 +38,7 @@ get_header();
 									endforeach;
 								endif;
 								?>
-								<time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>" class="ame-blog-post-date"><?php echo esc_html( get_the_date() ); ?></time>
+								<span class="ame-blog-post-date"><?php echo ame_bazaar_get_post_meta_data(); ?></span>
 							</div>
 							<h1 class="ame-blog-post-title"><?php the_title(); ?></h1>
 							
@@ -65,6 +65,9 @@ get_header();
 							<!-- Author Info Box -->
 							<?php get_template_part( 'components/blog/author-info' ); ?>
 							
+							<!-- Related Products Block -->
+							<?php get_template_part( 'components/blog/related-products' ); ?>
+
 							<!-- Store Internal Link Widget -->
 							<?php get_template_part( 'components/blog/internal-linking' ); ?>
 						</footer>
