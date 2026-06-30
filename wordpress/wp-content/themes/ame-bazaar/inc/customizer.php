@@ -189,5 +189,85 @@ function ame_bazaar_customize_register( $wp_customize ) {
 			'settings' => 'ame_bazaar_cat_' . $key . '_image',
 		) ) );
 	}
+
+	// Add Section for Why Choose Us
+	$wp_customize->add_section( 'ame_bazaar_why_choose_section', array(
+		'title'       => __( 'AME Bazaar Why Choose Us Settings', 'ame-bazaar' ),
+		'priority'    => 60,
+		'description' => __( 'Configure the Why Choose AME Bazaar homepage section.', 'ame-bazaar' ),
+	) );
+
+	// Section Title & Subtitle
+	$wp_customize->add_setting( 'ame_bazaar_why_section_title', array(
+		'default'           => 'Why Choose AME Bazaar',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'ame_bazaar_why_section_title_control', array(
+		'label'    => __( 'Section Title', 'ame-bazaar' ),
+		'section'  => 'ame_bazaar_why_choose_section',
+		'settings' => 'ame_bazaar_why_section_title',
+		'type'     => 'text',
+	) );
+
+	$wp_customize->add_setting( 'ame_bazaar_why_section_subtitle', array(
+		'default'           => 'Premium Family Fashion Store in Kirari, Delhi',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'ame_bazaar_why_section_subtitle_control', array(
+		'label'    => __( 'Section Subtitle', 'ame-bazaar' ),
+		'section'  => 'ame_bazaar_why_choose_section',
+		'settings' => 'ame_bazaar_why_section_subtitle',
+		'type'     => 'text',
+	) );
+
+	// Define 4 cards config
+	$why_cards = array(
+		1 => array(
+			'title' => 'Family-Owned Clothing Store',
+			'desc'  => 'Apparel Maheshwari Enterprises provides carefully selected garments for local families. Rooted in trust, quality materials, and personal care since inception.',
+		),
+		2 => array(
+			'title' => 'Affordable Family Fashion',
+			'desc'  => 'High-quality collection spanning Men\'s Wear, Women\'s Wear, and Kids Wear at fair prices. Complete shopping for Mubarakpur Road families under one roof.',
+		),
+		3 => array(
+			'title' => 'Tailoring & Alterations',
+			'desc'  => 'Dedicated custom tailoring and on-site alteration facility. Get a flawless fit on ethnic coordinates, trousers, and custom sizing options.',
+		),
+		4 => array(
+			'title' => 'Highly Rated Local Business',
+			'desc'  => 'Proudly rated 4.8+ Stars on Google Reviews. Recognized for exceptional customer support, local Delhi apparel retail expertise, and honest service.',
+		),
+	);
+
+	foreach ( $why_cards as $index => $card ) {
+		// Title setting
+		$wp_customize->add_setting( 'ame_bazaar_why_card' . $index . '_title', array(
+			'default'           => $card['title'],
+			'sanitize_callback' => 'sanitize_text_field',
+			'transport'         => 'refresh',
+		) );
+		$wp_customize->add_control( 'ame_bazaar_why_card' . $index . '_title_control', array(
+			'label'    => sprintf( __( 'Card %d Title', 'ame-bazaar' ), $index ),
+			'section'  => 'ame_bazaar_why_choose_section',
+			'settings' => 'ame_bazaar_why_card' . $index . '_title',
+			'type'     => 'text',
+		) );
+
+		// Desc setting
+		$wp_customize->add_setting( 'ame_bazaar_why_card' . $index . '_desc', array(
+			'default'           => $card['desc'],
+			'sanitize_callback' => 'sanitize_text_field',
+			'transport'         => 'refresh',
+		) );
+		$wp_customize->add_control( 'ame_bazaar_why_card' . $index . '_desc_control', array(
+			'label'    => sprintf( __( 'Card %d Description', 'ame-bazaar' ), $index ),
+			'section'  => 'ame_bazaar_why_choose_section',
+			'settings' => 'ame_bazaar_why_card' . $index . '_desc',
+			'type'     => 'textarea',
+		) );
+	}
 }
 add_action( 'customize_register', 'ame_bazaar_customize_register' );

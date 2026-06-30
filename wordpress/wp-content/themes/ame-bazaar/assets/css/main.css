@@ -836,3 +836,109 @@
 .ame-category-card-btn:hover .ame-arrow-icon {
 	transform: translateX(4px);
 }
+
+/* ==========================================================================
+   WHY CHOOSE US COMPONENT STYLES
+   ========================================================================== */
+.ame-why-choose-section {
+	padding-block: clamp(4rem, 8vw, 6rem);
+	background: var(--ame-color-cream);
+	border-top: 1px solid var(--ame-color-border);
+}
+
+.ame-why-choose-header {
+	text-align: center;
+	margin-bottom: 3.5rem;
+}
+
+.ame-why-choose-section-title {
+	font-family: var(--ame-font-heading);
+	font-size: clamp(1.8rem, 4vw, 2.5rem);
+	color: var(--ame-color-navy);
+	margin: 0 0 0.8rem 0;
+	font-weight: 800;
+	letter-spacing: -0.02em;
+}
+
+.ame-why-choose-section-subtitle {
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: var(--ame-color-slate);
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	margin: 0;
+}
+
+.ame-why-choose-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 2rem;
+}
+
+@media (min-width: 640px) {
+	.ame-why-choose-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 1024px) {
+	.ame-why-choose-grid {
+		grid-template-columns: repeat(4, 1fr);
+		gap: 2.2rem;
+	}
+}
+
+.ame-why-card {
+	background: var(--ame-color-white);
+	border: 1px solid var(--ame-color-border);
+	border-radius: var(--ame-radius-md);
+	padding: 2.5rem 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	box-shadow: var(--ame-shadow-sm);
+	transition: transform var(--ame-transition), box-shadow var(--ame-transition);
+}
+
+.ame-why-card:hover {
+	transform: translateY(-4px);
+	box-shadow: var(--ame-shadow-md);
+}
+
+.ame-why-card-icon-container {
+	width: 54px;
+	height: 54px;
+	border-radius: 50%;
+	background: var(--ame-color-cream);
+	color: var(--ame-color-gold);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 1.5rem;
+	transition: background var(--ame-transition), color var(--ame-transition);
+}
+
+.ame-why-card:hover .ame-why-card-icon-container {
+	background: var(--ame-color-navy);
+	color: var(--ame-color-white);
+}
+
+.ame-why-icon {
+	width: 24px;
+	height: 24px;
+	stroke-width: 2px;
+}
+
+.ame-why-card-title {
+	font-size: 1.15rem;
+	font-weight: 700;
+	color: var(--ame-color-navy);
+	margin: 0 0 1rem 0;
+}
+
+.ame-why-card-desc {
+	font-size: 0.8rem;
+	line-height: 1.6;
+	color: var(--ame-color-slate);
+	margin: 0;
+}
