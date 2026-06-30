@@ -1,0 +1,579 @@
+/*
+ * AME Bazaar Main Stylesheet
+ * Contains design system tokens and component styling.
+ */
+
+:root {
+	--ame-color-navy: #002347;
+	--ame-color-gold: #d4af37;
+	--ame-color-cream: #f8f7f4;
+	--ame-color-white: #ffffff;
+	--ame-color-slate: #334155;
+	--ame-color-charcoal: #1f2937;
+	--ame-color-border: #dbe2ea;
+	--ame-radius-sm: 0.5rem;
+	--ame-radius-md: 1rem;
+	--ame-radius-lg: 1.5rem;
+	--ame-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+	--ame-shadow-md: 0 10px 30px rgba(15, 23, 42, 0.08);
+	--ame-shadow-lg: 0 20px 60px rgba(15, 23, 42, 0.12);
+}
+
+.site-header,
+.site-footer {
+	width: 100%;
+}
+
+.site-main {
+	display: block;
+}
+
+.ame-bazaar-home {
+	min-height: 30vh;
+}
+
+.entry-content > * + * {
+	margin-top: 1.25rem;
+}
+
+.ame-bazaar-layout {
+	display: grid;
+	gap: 2rem;
+}
+
+.ame-bazaar-card {
+	border: 1px solid var(--ame-color-border);
+	border-radius: var(--ame-radius-lg);
+	background: var(--ame-color-white);
+	box-shadow: var(--ame-shadow-sm);
+}
+
+.ame-bazaar-card__body {
+	padding: clamp(1rem, 2vw, 1.5rem);
+}
+
+/* ==========================================================================
+   ANNOUNCEMENT BAR
+   ========================================================================== */
+.ame-announcement-bar {
+	background: var(--ame-color-navy);
+	color: var(--ame-color-gold);
+	padding: 0.5rem 0;
+	text-align: center;
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.ame-announcement-text {
+	display: inline-block;
+}
+
+/* ==========================================================================
+   HEADER MAIN
+   ========================================================================== */
+.ame-header-main-wrapper {
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	background: var(--ame-color-white);
+	border-bottom: 1px solid var(--ame-color-border);
+	transition: background var(--ame-transition), padding var(--ame-transition), box-shadow var(--ame-transition);
+	padding-block: 1.25rem;
+}
+
+/* Scroll-triggered states */
+.ame-header-main-wrapper.is-scrolled {
+	padding-block: 0.8rem;
+	box-shadow: var(--ame-shadow-sm);
+	background: rgba(255, 255, 255, 0.95);
+	backdrop-filter: blur(10px);
+}
+
+.ame-header-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.ame-header-left {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+}
+
+/* ==========================================================================
+   BRAND LOGO
+   ========================================================================== */
+.ame-brand-logo-container {
+	display: flex;
+	align-items: center;
+}
+
+.ame-logo-link {
+	display: block;
+}
+
+.ame-logo-img {
+	height: auto;
+	max-height: 48px;
+	width: auto;
+	display: block;
+	transition: max-height var(--ame-transition);
+}
+
+.is-scrolled .ame-logo-img {
+	max-height: 38px;
+}
+
+.ame-logo-text {
+	font-family: var(--ame-font-heading);
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: var(--ame-color-navy);
+	text-decoration: none;
+	letter-spacing: -0.02em;
+}
+
+/* ==========================================================================
+   DESKTOP NAVIGATION (Zara/Apple inspired)
+   ========================================================================== */
+.ame-desktop-navigation {
+	display: none;
+}
+
+@media (min-width: 1024px) {
+	.ame-desktop-navigation {
+		display: block;
+	}
+}
+
+.ame-desktop-menu-list {
+	display: flex;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	gap: 2.2rem;
+}
+
+.ame-desktop-menu-list a {
+	font-size: 0.85rem;
+	font-weight: 500;
+	color: var(--ame-color-charcoal);
+	text-decoration: none;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	position: relative;
+	padding-block: 0.5rem;
+}
+
+.ame-desktop-menu-list a::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	background: var(--ame-color-gold);
+	transform: scaleX(0);
+	transform-origin: right;
+	transition: transform var(--ame-transition);
+}
+
+.ame-desktop-menu-list a:hover {
+	color: var(--ame-color-navy);
+}
+
+.ame-desktop-menu-list a:hover::after {
+	transform: scaleX(1);
+	transform-origin: left;
+}
+
+/* Highlight current page */
+.ame-desktop-menu-list .current-menu-item > a {
+	color: var(--ame-color-navy);
+	font-weight: 600;
+}
+
+.ame-desktop-menu-list .current-menu-item > a::after {
+	transform: scaleX(1);
+}
+
+/* ==========================================================================
+   HEADER ACTIONS (Cart, Account, CTA Buttons)
+   ========================================================================== */
+.ame-header-actions {
+	display: flex;
+	align-items: center;
+	gap: 0.8rem;
+}
+
+@media (min-width: 1024px) {
+	.ame-header-actions {
+		gap: 1.2rem;
+	}
+}
+
+.ame-action-btn {
+	background: none;
+	border: none;
+	padding: 0.5rem;
+	color: var(--ame-color-charcoal);
+	cursor: pointer;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	transition: background var(--ame-transition), color var(--ame-transition);
+}
+
+.ame-action-btn:hover {
+	background: var(--ame-color-cream);
+	color: var(--ame-color-navy);
+}
+
+.ame-icon {
+	width: 20px;
+	height: 20px;
+	stroke-width: 1.8px;
+}
+
+.ame-cart-link {
+	position: relative;
+}
+
+.ame-cart-badge {
+	position: absolute;
+	top: -2px;
+	right: -2px;
+	background: var(--ame-color-gold);
+	color: var(--ame-color-navy);
+	font-size: 0.65rem;
+	font-weight: 700;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1.5px solid var(--ame-color-white);
+}
+
+/* CTA buttons in header */
+.ame-btn-call,
+.ame-btn-visit {
+	display: none;
+}
+
+@media (min-width: 1024px) {
+	.ame-btn-call,
+	.ame-btn-visit {
+		display: inline-flex;
+		padding: 0.6rem 1.2rem;
+		font-size: 0.8rem;
+	}
+}
+
+.ame-icon-btn {
+	width: 14px;
+	height: 14px;
+}
+
+/* ==========================================================================
+   MOBILE MENU TOGGLE BUTTON
+   ========================================================================== */
+.ame-mobile-menu-toggle {
+	background: none;
+	border: none;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 20px;
+	height: 14px;
+	padding: 0;
+	z-index: 105;
+}
+
+@media (min-width: 1024px) {
+	.ame-mobile-menu-toggle {
+		display: none;
+	}
+}
+
+.ame-hamburger-line {
+	display: block;
+	width: 100%;
+	height: 2px;
+	background-color: var(--ame-color-charcoal);
+	transition: transform var(--ame-transition), opacity var(--ame-transition);
+}
+
+/* ==========================================================================
+   MOBILE NAVIGATION DRAWER
+   ========================================================================== */
+.ame-mobile-drawer {
+	position: fixed;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	visibility: hidden;
+	transition: visibility var(--ame-transition);
+}
+
+.ame-mobile-drawer.is-active {
+	left: 0;
+	visibility: visible;
+}
+
+.ame-mobile-drawer-inner {
+	position: absolute;
+	top: 0;
+	left: -320px;
+	width: 320px;
+	max-width: 85%;
+	height: 100%;
+	background: var(--ame-color-white);
+	box-shadow: var(--ame-shadow-lg);
+	z-index: 10001;
+	display: flex;
+	flex-direction: column;
+	transition: left var(--ame-transition);
+	padding: 1.5rem;
+}
+
+.ame-mobile-drawer.is-active .ame-mobile-drawer-inner {
+	left: 0;
+}
+
+.ame-mobile-drawer-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 35, 71, 0.4);
+	opacity: 0;
+	z-index: 10000;
+	transition: opacity var(--ame-transition);
+	pointer-events: none;
+}
+
+.ame-mobile-drawer.is-active .ame-mobile-drawer-overlay {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.ame-mobile-drawer-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 2rem;
+}
+
+.ame-mobile-drawer-close-btn,
+.ame-search-close-btn {
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 0.5rem;
+	color: var(--ame-color-charcoal);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+}
+
+.ame-mobile-drawer-close-btn:hover,
+.ame-search-close-btn:hover {
+	background: var(--ame-color-cream);
+}
+
+.ame-icon-close {
+	width: 24px;
+	height: 24px;
+}
+
+/* Mobile search */
+.ame-mobile-drawer-search {
+	margin-bottom: 1.5rem;
+}
+
+.ame-mobile-search-form {
+	display: flex;
+	border: 1px solid var(--ame-color-border);
+	border-radius: var(--ame-radius-sm);
+	overflow: hidden;
+}
+
+.ame-mobile-search-input {
+	flex: 1;
+	border: none;
+	padding: 0.75rem 1rem;
+	font-size: 0.9rem;
+	outline: none;
+	background: var(--ame-color-cream);
+}
+
+.ame-mobile-search-submit {
+	background: var(--ame-color-cream);
+	border: none;
+	padding-inline: 1rem;
+	cursor: pointer;
+	color: var(--ame-color-slate);
+}
+
+/* Drawer navigation links */
+.ame-mobile-drawer-navigation {
+	flex: 1;
+	overflow-y: auto;
+	margin-bottom: 2rem;
+}
+
+.ame-mobile-menu-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.ame-mobile-menu-list a {
+	font-size: 1rem;
+	font-weight: 600;
+	color: var(--ame-color-charcoal);
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	display: block;
+	padding-block: 0.25rem;
+}
+
+.ame-mobile-menu-list a:hover,
+.ame-mobile-menu-list .current-menu-item > a {
+	color: var(--ame-color-gold);
+}
+
+/* Drawer Footer */
+.ame-mobile-drawer-footer {
+	border-top: 1px solid var(--ame-color-border);
+	padding-top: 1.5rem;
+}
+
+.ame-mobile-ctas {
+	display: flex;
+	flex-direction: column;
+	gap: 0.8rem;
+	margin-bottom: 1.5rem;
+}
+
+.ame-btn-mobile-call,
+.ame-btn-mobile-visit {
+	width: 100%;
+	padding-block: 0.8rem;
+	font-size: 0.9rem;
+}
+
+.ame-mobile-store-info {
+	font-size: 0.8rem;
+	color: var(--ame-color-slate);
+	line-height: 1.5;
+}
+
+.ame-mobile-store-info p {
+	margin: 0 0 0.5rem 0;
+}
+
+/* ==========================================================================
+   SEARCH OVERLAY MODAL
+   ========================================================================== */
+.ame-search-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 35, 71, 0.95);
+	z-index: 10000;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity var(--ame-transition), visibility var(--ame-transition);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.ame-search-overlay.is-active {
+	opacity: 1;
+	visibility: visible;
+}
+
+.ame-search-overlay-inner {
+	width: min(600px, calc(100% - 3rem));
+	position: relative;
+	text-align: center;
+}
+
+.ame-search-close-btn {
+	position: absolute;
+	top: -60px;
+	right: 0;
+	color: var(--ame-color-white);
+}
+
+.ame-search-close-btn:hover {
+	background: rgba(255, 255, 255, 0.1);
+}
+
+.ame-search-overlay-form {
+	display: flex;
+	border-bottom: 2px solid var(--ame-color-gold);
+	padding-bottom: 0.5rem;
+}
+
+.ame-search-input {
+	flex: 1;
+	background: none;
+	border: none;
+	color: var(--ame-color-white);
+	font-size: 1.5rem;
+	padding: 0.5rem 0;
+	outline: none;
+}
+
+.ame-search-input::placeholder {
+	color: rgba(255, 255, 255, 0.4);
+}
+
+.ame-search-submit-btn {
+	background: none;
+	border: none;
+	color: var(--ame-color-gold);
+	cursor: pointer;
+	padding-inline: 0.5rem;
+}
+
+/* ==========================================================================
+   UTILITIES
+   ========================================================================== */
+/* Visible Focus Indicator (WCAG 2.2 AA) */
+:focus-visible {
+	outline: 3px solid var(--ame-color-gold) !important;
+	outline-offset: 3px !important;
+}
+
+/* Skip link */
+.skip-link {
+	background: var(--ame-color-navy);
+	color: var(--ame-color-gold);
+	font-weight: 700;
+	padding: 1rem 1.5rem;
+	border-radius: var(--ame-radius-sm);
+	z-index: 100000;
+}
