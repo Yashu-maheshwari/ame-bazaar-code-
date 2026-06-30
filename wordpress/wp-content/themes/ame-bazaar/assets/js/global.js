@@ -116,5 +116,19 @@
 				closeMenu();
 			}
 		}
-	});
+	/* ==========================================================================
+	   5. READING PROGRESS INDICATOR
+	   ========================================================================== */
+	const progressIndicator = document.getElementById('ame-reading-progress-bar');
+	if (progressIndicator) {
+		const updateProgress = () => {
+			const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+			if (totalHeight > 0) {
+				const progress = (window.scrollY / totalHeight) * 100;
+				progressIndicator.style.width = `${progress}%`;
+			}
+		};
+		window.addEventListener('scroll', updateProgress, { passive: true });
+		updateProgress();
+	}
 })();
