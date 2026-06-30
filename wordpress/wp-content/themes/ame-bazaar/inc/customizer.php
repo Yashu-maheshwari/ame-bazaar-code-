@@ -609,12 +609,12 @@ function ame_bazaar_customize_register( $wp_customize ) {
 
 	// Store hours (Schema format)
 	$wp_customize->add_setting( 'ame_bazaar_store_hours', array(
-		'default'           => 'Mo-Su 09:00-22:00',
+		'default'           => 'Mo-Su 09:00–22:00',
 		'sanitize_callback' => 'sanitize_text_field',
 		'transport'         => 'refresh',
 	) );
 	$wp_customize->add_control( 'ame_bazaar_store_hours_control', array(
-		'label'    => __( 'Schema Opening Hours (e.g. Mo-Su 09:00-22:00)', 'ame-bazaar' ),
+		'label'    => __( 'Schema Opening Hours (e.g. Mo-Su 09:00–22:00)', 'ame-bazaar' ),
 		'section'  => 'ame_bazaar_schema_section',
 		'settings' => 'ame_bazaar_store_hours',
 		'type'     => 'text',
@@ -622,12 +622,12 @@ function ame_bazaar_customize_register( $wp_customize ) {
 
 	// Price Range setting
 	$wp_customize->add_setting( 'ame_bazaar_price_range', array(
-		'default'           => '₹100 to ₹1000',
+		'default'           => '₹100–₹1000',
 		'sanitize_callback' => 'sanitize_text_field',
 		'transport'         => 'refresh',
 	) );
 	$wp_customize->add_control( 'ame_bazaar_price_range_control', array(
-		'label'    => __( 'Price Range (e.g. ₹100 to ₹1000)', 'ame-bazaar' ),
+		'label'    => __( 'Price Range (e.g. ₹100–₹1000)', 'ame-bazaar' ),
 		'section'  => 'ame_bazaar_schema_section',
 		'settings' => 'ame_bazaar_price_range',
 		'type'     => 'text',

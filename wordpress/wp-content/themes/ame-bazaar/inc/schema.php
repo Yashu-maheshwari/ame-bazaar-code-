@@ -1,6 +1,6 @@
 <?php
 /**
- * Structured data helpers and JSON-LD generator.
+ * Structured data helpers and connected JSON-LD Entity Graph generator.
  *
  * @package Ame_Bazaar
  */
@@ -10,7 +10,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Get Organization schema.
+ * Get WebSite entity schema.
+ *
+ * @return array
+ */
+function ame_bazaar_get_website_schema() {
+	$brand_name = ame_bazaar_get_brand_name();
+
+	$schema = array(
+		'@type'     => 'WebSite',
+		'@id'       => home_url( '/#website' ),
+		'url'       => home_url( '/' ),
+		'name'      => $brand_name,
+		'publisher' => array(
+			'@id' => home_url( '/#organization' ),
+		),
+	);
+
+	return apply_filters( 'ame_bazaar_website_schema', $schema );
+}
+
+/**
+ * Get Organization entity schema.
  *
  * @return array
  */
@@ -21,14 +42,22 @@ function ame_bazaar_get_organization_schema() {
 	$instagram  = get_theme_mod( 'ame_bazaar_instagram_url', 'https://www.instagram.com/amebazaar' );
 
 	$schema = array(
-		'@context' => 'https://schema.org',
-		'@type'    => 'Organization',
-		'name'     => $brand_name,
-		'url'      => home_url( '/' ),
+		'@type' => 'Organization',
+		'@id'   => home_url( '/#organization' ),
+		'name'  => $brand_name,
+		'url'   => home_url( '/' ),
 	);
 
 	if ( $logo_url ) {
-		$schema['logo'] = $logo_url;
+		$schema['logo'] = array(
+			'@type'   => 'ImageObject',
+			'@id'     => home_url( '/#logo' ),
+			'url'     => $logo_url,
+			'caption' => $brand_name,
+		);
+		$schema['image'] = array(
+			'@id' => home_url( '/#logo' ),
+		);
 	}
 
 	$same_as = array();
@@ -47,40 +76,41 @@ function ame_bazaar_get_organization_schema() {
 }
 
 /**
- * Get LocalBusiness & ClothingStore schema.
+ * Get ClothingStore / LocalBusiness entity schema.
  *
  * @return array
  */
 function ame_bazaar_get_clothing_store_schema() {
 	$brand_name = ame_bazaar_get_brand_name();
-	$logo_url   = ame_bazaar_get_custom_logo_url();
 	$phone      = get_theme_mod( 'ame_bazaar_phone', '+91 99999 99999' );
 	$maps_url   = get_theme_mod( 'ame_bazaar_maps_url', 'https://maps.google.com/?q=AME+Bazaar+Kirari+Delhi' );
-	
+
 	// Address details
 	$street  = get_theme_mod( 'ame_bazaar_street_address', 'Mubarakpur Road' );
 	$city    = get_theme_mod( 'ame_bazaar_locality', 'Kirari' );
 	$state   = get_theme_mod( 'ame_bazaar_region', 'Delhi' );
 	$zip     = get_theme_mod( 'ame_bazaar_postal_code', '110086' );
 	$country = get_theme_mod( 'ame_bazaar_country', 'IN' );
-	
+
 	// Additional info
-	$hours        = get_theme_mod( 'ame_bazaar_store_hours', 'Mo-Su 09:00-22:00' );
+	$hours        = get_theme_mod( 'ame_bazaar_store_hours', 'Mo-Su 09:00–22:00' );
 	$areas_served = get_theme_mod( 'ame_bazaar_areas_served', 'Kirari, Mubarakpur, Meer Vihar, Baljit Vihar, Prem Nagar, Nangloi, Budh Vihar, Rohini' );
-	$price_range  = get_theme_mod( 'ame_bazaar_price_range', '₹100 to ₹1000' );
+	$price_range  = get_theme_mod( 'ame_bazaar_price_range', '₹100–₹1000' );
 	$facebook     = get_theme_mod( 'ame_bazaar_facebook_url', 'https://www.facebook.com/amebazaar' );
 	$instagram    = get_theme_mod( 'ame_bazaar_instagram_url', 'https://www.instagram.com/amebazaar' );
 
-	// Build Schema Array
 	$schema = array(
-		'@context'     => 'https://schema.org',
-		'@type'        => 'ClothingStore',
-		'name'         => $brand_name,
-		'url'          => home_url( '/' ),
-		'telephone'    => $phone,
-		'priceRange'   => $price_range,
-		'hasMap'       => $maps_url,
-		'address'      => array(
+		'@type'              => 'ClothingStore',
+		'@id'                => home_url( '/#store' ),
+		'name'               => $brand_name,
+		'url'                => home_url( '/' ),
+		'telephone'          => $phone,
+		'priceRange'         => $price_range,
+		'hasMap'             => $maps_url,
+		'parentOrganization' => array(
+			'@id' => home_url( '/#organization' ),
+		),
+		'address'            => array(
 			'@type'           => 'PostalAddress',
 			'streetAddress'   => $street,
 			'addressLocality' => $city,
@@ -88,21 +118,20 @@ function ame_bazaar_get_clothing_store_schema() {
 			'postalCode'      => $zip,
 			'addressCountry'  => $country,
 		),
-		'openingHours' => $hours,
+		'openingHours'       => $hours,
 	);
 
-	if ( $logo_url ) {
-		$schema['logo']  = $logo_url;
-		$schema['image'] = $logo_url;
+	if ( ame_bazaar_get_custom_logo_url() ) {
+		$schema['image'] = array(
+			'@id' => home_url( '/#logo' ),
+		);
 	}
 
-	// Parse areas served into schema array
 	if ( $areas_served ) {
 		$areas = array_map( 'trim', explode( ',', $areas_served ) );
 		$schema['areaServed'] = $areas;
 	}
 
-	// Services & Socials
 	$schema['makesOffer'] = array(
 		array(
 			'@type' => 'Offer',
@@ -135,7 +164,7 @@ function ame_bazaar_get_clothing_store_schema() {
 }
 
 /**
- * Get FAQ Page Schema if homepage questions are enqueued.
+ * Get FAQ Page entity schema if homepage questions exist.
  *
  * @return array|bool
  */
@@ -166,8 +195,8 @@ function ame_bazaar_get_faq_schema() {
 	}
 
 	$schema = array(
-		'@context'   => 'https://schema.org',
 		'@type'      => 'FAQPage',
+		'@id'        => home_url( '/#faq' ),
 		'mainEntity' => $questions,
 	);
 
@@ -175,16 +204,16 @@ function ame_bazaar_get_faq_schema() {
 }
 
 /**
- * Get Breadcrumb schema list.
+ * Get Breadcrumb entity schema.
  *
  * @return array
  */
 function ame_bazaar_get_breadcrumb_schema() {
 	$brand_name = ame_bazaar_get_brand_name();
-	
+
 	$schema = array(
-		'@context'        => 'https://schema.org',
 		'@type'           => 'BreadcrumbList',
+		'@id'             => get_permalink() . '#breadcrumbs',
 		'itemListElement' => array(
 			array(
 				'@type'    => 'ListItem',
@@ -208,28 +237,54 @@ function ame_bazaar_get_breadcrumb_schema() {
 }
 
 /**
- * Output combined structured data in the header.
+ * Output combined connected JSON-LD Entity Graph in the head.
  */
 function ame_bazaar_output_schema() {
 	if ( is_admin() ) {
 		return;
 	}
 
-	$schemas = array(
-		ame_bazaar_get_organization_schema(),
-		ame_bazaar_get_clothing_store_schema(),
-		ame_bazaar_get_breadcrumb_schema(),
-	);
+	$graph = array();
 
+	// 1. WebSite Entity
+	$website = ame_bazaar_get_website_schema();
+	if ( $website ) {
+		$graph[] = $website;
+	}
+
+	// 2. Organization Entity
+	$org = ame_bazaar_get_organization_schema();
+	if ( $org ) {
+		$graph[] = $org;
+	}
+
+	// 3. ClothingStore (LocalBusiness) Entity
+	$store = ame_bazaar_get_clothing_store_schema();
+	if ( $store ) {
+		$graph[] = $store;
+	}
+
+	// 4. Breadcrumbs Entity
+	$breadcrumbs = ame_bazaar_get_breadcrumb_schema();
+	if ( $breadcrumbs ) {
+		$graph[] = $breadcrumbs;
+	}
+
+	// 5. FAQ Page Entity (Front Page Only)
 	$faq = ame_bazaar_get_faq_schema();
 	if ( $faq ) {
-		$schemas[] = $faq;
+		$graph[] = $faq;
 	}
 
-	foreach ( $schemas as $schema ) {
-		if ( $schema ) {
-			echo '<script type="application/ld+json">' . wp_json_encode( $schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
-		}
+	if ( empty( $graph ) ) {
+		return;
 	}
+
+	$output = array(
+		'@context' => 'https://schema.org',
+		'@graph'   => $graph,
+	);
+
+	echo '<script type="application/ld+json">' . wp_json_encode( $output, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
 }
 add_action( 'wp_head', 'ame_bazaar_output_schema', 20 );
