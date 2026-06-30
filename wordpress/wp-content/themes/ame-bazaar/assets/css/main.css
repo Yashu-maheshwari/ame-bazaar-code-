@@ -2187,3 +2187,228 @@
 .ame-related-article-title-link:hover {
 	color: var(--ame-color-gold);
 }
+
+/* ==========================================================================
+   404 AND SEARCH RESULTS COMPONENT STYLES
+   ========================================================================== */
+.ame-404-wrapper,
+.ame-search-results-wrapper {
+	padding-block: 3rem 6rem;
+}
+
+.ame-404-layout,
+.ame-search-no-results {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 3.5rem;
+	align-items: start;
+}
+
+@media (min-width: 768px) {
+	.ame-404-layout,
+	.ame-search-no-results {
+		grid-template-columns: 1.1fr 0.9fr;
+		gap: 5rem;
+	}
+}
+
+.ame-404-content,
+.ame-search-no-results-content {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.ame-404-badge {
+	display: inline-block;
+	background: var(--ame-color-gold);
+	color: var(--ame-color-navy);
+	font-size: 0.75rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	padding: 0.4rem 0.9rem;
+	border-radius: var(--ame-radius-sm);
+	margin-bottom: 1.5rem;
+}
+
+.ame-404-title,
+.ame-search-title {
+	font-family: var(--ame-font-heading);
+	font-size: clamp(2rem, 5vw, 2.75rem);
+	color: var(--ame-color-navy);
+	font-weight: 800;
+	line-height: 1.2;
+	letter-spacing: -0.02em;
+	margin: 0 0 1.25rem 0;
+}
+
+.ame-404-text,
+.ame-no-results-text,
+.ame-search-count-desc {
+	font-size: 0.95rem;
+	line-height: 1.7;
+	color: var(--ame-color-slate);
+	margin: 0 0 2rem 0;
+}
+
+.ame-404-search-box {
+	width: 100%;
+	margin-bottom: 2.5rem;
+}
+
+.ame-404-search-box form {
+	display: flex;
+	border: 1px solid var(--ame-color-border);
+	border-radius: var(--ame-radius-sm);
+	overflow: hidden;
+	box-shadow: var(--ame-shadow-sm);
+}
+
+.ame-404-search-box input[type="search"] {
+	flex: 1;
+	border: none;
+	padding: 0.9rem 1.25rem;
+	font-size: 0.95rem;
+	outline: none;
+	background: var(--ame-color-cream);
+	color: var(--ame-color-charcoal);
+}
+
+.ame-404-search-box button[type="submit"],
+.ame-404-search-box input[type="submit"] {
+	background: var(--ame-color-navy);
+	color: var(--ame-color-white);
+	border: none;
+	padding-inline: 1.5rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background var(--ame-transition);
+}
+
+.ame-404-search-box button[type="submit"]:hover,
+.ame-404-search-box input[type="submit"]:hover {
+	background: var(--ame-color-gold);
+	color: var(--ame-color-navy);
+}
+
+.ame-404-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	width: 100%;
+}
+
+.ame-404-actions .ame-btn {
+	justify-content: center;
+	padding-block: 0.9rem;
+}
+
+/* Departments Sidebar styling */
+.ame-404-departments,
+.ame-search-no-results-departments {
+	display: flex;
+	flex-direction: column;
+}
+
+.ame-404-departments-title,
+.ame-no-results-dept-title {
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: var(--ame-color-navy);
+	margin: 0 0 1.5rem 0;
+	border-bottom: 2px solid var(--ame-color-gold);
+	padding-bottom: 0.5rem;
+	display: inline-block;
+	align-self: flex-start;
+}
+
+.ame-404-dept-list {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 2.5rem 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.ame-404-dept-link {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-block: 0.9rem;
+	border-bottom: 1px solid var(--ame-color-border);
+	color: var(--ame-color-charcoal);
+	text-decoration: none;
+	font-size: 0.9rem;
+	font-weight: 600;
+	transition: color var(--ame-transition), padding-left var(--ame-transition);
+}
+
+.ame-404-dept-link:hover {
+	color: var(--ame-color-gold);
+	padding-left: 0.5rem;
+}
+
+.ame-dept-arrow {
+	color: var(--ame-color-slate);
+	transition: color var(--ame-transition), transform var(--ame-transition);
+}
+
+.ame-404-dept-link:hover .ame-dept-arrow {
+	color: var(--ame-color-gold);
+	transform: translateX(4px);
+}
+
+/* Sidebar personal support box */
+.ame-404-help-box,
+.ame-search-help-box {
+	background: var(--ame-color-cream);
+	border: 1px solid var(--ame-color-border);
+	border-radius: var(--ame-radius-md);
+	padding: 1.8rem;
+}
+
+.ame-404-help-title,
+.ame-no-results-help-title {
+	font-size: 1.1rem;
+	font-weight: 700;
+	color: var(--ame-color-navy);
+	margin: 0 0 0.6rem 0;
+}
+
+.ame-404-help-desc,
+.ame-no-results-help-desc {
+	font-size: 0.85rem;
+	line-height: 1.6;
+	color: var(--ame-color-slate);
+	margin: 0 0 1.25rem 0;
+}
+
+.ame-404-call-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.8rem;
+	font-size: 1rem;
+	font-weight: 700;
+	color: var(--ame-color-navy);
+	text-decoration: none;
+	transition: color var(--ame-transition);
+}
+
+.ame-404-call-link:hover {
+	color: var(--ame-color-gold);
+}
+
+/* Header summary spacing on active search */
+.ame-search-results-header {
+	margin-bottom: 3.5rem;
+}
+
+.ame-search-results-header .ame-search-title {
+	margin-bottom: 0.5rem;
+}
+
+.ame-search-results-header .ame-search-count-desc {
+	margin-bottom: 0;
+	font-weight: 600;
+}

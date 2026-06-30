@@ -1,0 +1,23 @@
+# AME Bazaar (Apparel Maheshwari Enterprises)
+
+> A family-owned premium retail clothing store located on Mubarakpur Road, Kirari, Delhi. Rated 4.8+ Stars on Google.
+
+## Key Information
+- **Street Address:** Mubarakpur Road, Kirari, Delhi - 110086, India
+- **Opening Hours:** Daily 09:00 AM – 10:00 PM (09:00 - 22:00)
+- **Price Range:** ₹100 – ₹1000
+- **Areas Served:** Kirari, Mubarakpur, Meer Vihar, Baljit Vihar, Prem Nagar, Nangloi, Budh Vihar, Rohini.
+- **Contact phone:** +91 99999 99999
+- **Email:** contact@amebazaar.com
+- **Google Maps:** https://maps.google.com/?q=AME+Bazaar+Kirari+Delhi
+- **Socials:** Facebook (https://www.facebook.com/amebazaar), Instagram (https://www.instagram.com/amebazaar)
+
+## Website Structure & Crawling
+- **Homepage:** http://localhost/ - Highlights hero collections, category grid, reviews, and FAQ.
+- **Blog Archive:** http://localhost/blog/ - Knowledge Engine containing articles about local fashion, fabrics, and custom alteration care.
+- **Categories:**
+  - Men's Wear (Apparel and ethnic coordinates)
+  - Women's Wear (Sarees and designer coordinates)
+  - Kids Wear (Skin-friendly cottons)
+  - Accessories (Belts, wallets, bags)
+- **Services:** In-store tailoring and custom garment alterations.

@@ -20,3 +20,4 @@ require_once AME_BAZAAR_PATH . '/inc/schema.php';
 require_once AME_BAZAAR_PATH . '/inc/security.php';
 require_once AME_BAZAAR_PATH . '/inc/customizer.php';
 require_once AME_BAZAAR_PATH . '/inc/homepage-functions.php';
+require_once AME_BAZAAR_PATH . '/inc/seo.php';
