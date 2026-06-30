@@ -49,5 +49,53 @@ function ame_bazaar_customize_register( $wp_customize ) {
 		'settings' => 'ame_bazaar_maps_url',
 		'type'     => 'url',
 	) );
+
+	// Add Section for Hero
+	$wp_customize->add_section( 'ame_bazaar_hero_section', array(
+		'title'       => __( 'AME Bazaar Hero Settings', 'ame-bazaar' ),
+		'priority'    => 40,
+		'description' => __( 'Configure the homepage Hero section.', 'ame-bazaar' ),
+	) );
+
+	// 1. Hero Title
+	$wp_customize->add_setting( 'ame_bazaar_hero_title', array(
+		'default'           => 'Affordable Fashion for Every Family in Kirari, Delhi',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+
+	$wp_customize->add_control( 'ame_bazaar_hero_title_control', array(
+		'label'    => __( 'Hero Title', 'ame-bazaar' ),
+		'section'  => 'ame_bazaar_hero_section',
+		'settings' => 'ame_bazaar_hero_title',
+		'type'     => 'text',
+	) );
+
+	// 2. Hero Subtitle
+	$wp_customize->add_setting( 'ame_bazaar_hero_subtitle', array(
+		'default'           => "Men's Wear • Women's Wear • Kids Wear • Accessories",
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+
+	$wp_customize->add_control( 'ame_bazaar_hero_subtitle_control', array(
+		'label'    => __( 'Hero Subtitle', 'ame-bazaar' ),
+		'section'  => 'ame_bazaar_hero_section',
+		'settings' => 'ame_bazaar_hero_subtitle',
+		'type'     => 'text',
+	) );
+
+	// 3. Hero Image
+	$wp_customize->add_setting( 'ame_bazaar_hero_image', array(
+		'default'           => '',
+		'sanitize_callback' => 'esc_url_raw',
+		'transport'         => 'refresh',
+	) );
+
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'ame_bazaar_hero_image_control', array(
+		'label'    => __( 'Hero Image', 'ame-bazaar' ),
+		'section'  => 'ame_bazaar_hero_section',
+		'settings' => 'ame_bazaar_hero_image',
+	) ) );
 }
 add_action( 'customize_register', 'ame_bazaar_customize_register' );
