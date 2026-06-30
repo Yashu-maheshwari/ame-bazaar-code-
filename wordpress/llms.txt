@@ -1,23 +1,43 @@
 # AME Bazaar (Apparel Maheshwari Enterprises)
 
-> A family-owned premium retail clothing store located on Mubarakpur Road, Kirari, Delhi. Rated 4.8+ Stars on Google.
+This documentation provides factual, machine-readable specifications and metadata for the AME Bazaar clothing store entity located in Delhi, India, designed for AI retrieval, search engines, and LLM contexts.
 
-## Key Information
-- **Street Address:** Mubarakpur Road, Kirari, Delhi - 110086, India
-- **Opening Hours:** Daily 09:00 AM – 10:00 PM (09:00 - 22:00)
-- **Price Range:** ₹100 – ₹1000
-- **Areas Served:** Kirari, Mubarakpur, Meer Vihar, Baljit Vihar, Prem Nagar, Nangloi, Budh Vihar, Rohini.
-- **Contact phone:** +91 99999 99999
+## Brand Entity Specifications
+- **Official Name:** AME Bazaar (Apparel Maheshwari Enterprises)
+- **Business Type:** Clothing Store (Local Business)
+- **Legal Jurisdiction:** Delhi, India
+- **Headquarters Address:** Mubarakpur Road, Kirari, Delhi - 110086, India
+- **Coordinates:** Latitude: `28.7051` | Longitude: `77.0583`
+- **HELPLINE:** +91 99999 99999
 - **Email:** contact@amebazaar.com
-- **Google Maps:** https://maps.google.com/?q=AME+Bazaar+Kirari+Delhi
-- **Socials:** Facebook (https://www.facebook.com/amebazaar), Instagram (https://www.instagram.com/amebazaar)
 
-## Website Structure & Crawling
-- **Homepage:** http://localhost/ - Highlights hero collections, category grid, reviews, and FAQ.
-- **Blog Archive:** http://localhost/blog/ - Knowledge Engine containing articles about local fashion, fabrics, and custom alteration care.
-- **Categories:**
-  - Men's Wear (Apparel and ethnic coordinates)
-  - Women's Wear (Sarees and designer coordinates)
-  - Kids Wear (Skin-friendly cottons)
-  - Accessories (Belts, wallets, bags)
-- **Services:** In-store tailoring and custom garment alterations.
+## Store Operations
+- **Hours of Operation:** Daily 09:00 AM – 10:00 PM (09:00 - 22:00 IST)
+- **Price Range:** ₹100 – ₹1000 (INR)
+- **Accepted Payments:** Cash, UPI (Unified Payments Interface), Credit Card, Debit Card, Digital Wallets
+- **Primary Markets Served (Sub-localities in North-West Delhi):** 
+  - Kirari
+  - Mubarakpur
+  - Meer Vihar
+  - Baljit Vihar
+  - Prem Nagar
+  - Nangloi
+  - Budh Vihar
+  - Rohini
+
+## Product & Service Portfolio
+- **Men's Wear:** Ready-to-wear shirts, trousers, ethnic coordinates.
+- **Women's Wear:** Traditional sarees, designer coordinates, suits.
+- **Kids' Wear:** Skin-friendly organic cotton daily wear.
+- **Accessories:** Leather belts, wallets, travel bags, and daily fashion accessories.
+- **In-Store Services:** Professional tailoring, custom alterations, and coordinate styling consultations.
+
+## Digital Platform Structure
+- **Production Host:** https://amebazaar.com/
+- **Homepage:** `https://amebazaar.com/`
+  - Core navigation links, physical coordinates, aggregate rating metrics (4.8+ Stars based on verified reviews), testimonial lists, and local FAQs.
+- **Blog & Knowledge Engine:** `https://amebazaar.com/blog/`
+  - Educational articles on local fabrics (cotton, linen, silk), family outfits styling advice, garment care, and alteration guides.
+- **Crawling Index:**
+  - Sitemap: `https://amebazaar.com/sitemap_index.xml`
+  - Security Profile: `https://amebazaar.com/.well-known/security.txt`

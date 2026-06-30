@@ -66,6 +66,13 @@ function ame_bazaar_output_seo_meta() {
 		echo '<meta property="og:image" content="' . esc_url( $image ) . '">' . "\n";
 	}
 
+	if ( is_singular( 'post' ) ) {
+		echo '<meta property="article:published_time" content="' . esc_attr( get_the_date( 'c' ) ) . '">' . "\n";
+		echo '<meta property="article:modified_time" content="' . esc_attr( get_the_modified_date( 'c' ) ) . '">' . "\n";
+		echo '<meta property="article:author" content="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . "\n";
+	}
+
+
 	// Twitter Card Tags
 	echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
 	echo '<meta name="twitter:title" content="' . esc_attr( $title ) . '">' . "\n";

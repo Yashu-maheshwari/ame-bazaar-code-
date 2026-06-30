@@ -671,6 +671,32 @@ function ame_bazaar_customize_register( $wp_customize ) {
 		'type'     => 'text',
 	) );
 
+	// Latitude
+	$wp_customize->add_setting( 'ame_bazaar_latitude', array(
+		'default'           => '28.7051',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'ame_bazaar_latitude_control', array(
+		'label'    => __( 'Store Latitude', 'ame-bazaar' ),
+		'section'  => 'ame_bazaar_schema_section',
+		'settings' => 'ame_bazaar_latitude',
+		'type'     => 'text',
+	) );
+
+	// Longitude
+	$wp_customize->add_setting( 'ame_bazaar_longitude', array(
+		'default'           => '77.0583',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'ame_bazaar_longitude_control', array(
+		'label'    => __( 'Store Longitude', 'ame-bazaar' ),
+		'section'  => 'ame_bazaar_schema_section',
+		'settings' => 'ame_bazaar_longitude',
+		'type'     => 'text',
+	) );
+
 	// Add Section for Footer Settings
 	$wp_customize->add_section( 'ame_bazaar_footer_section', array(
 		'title'       => __( 'AME Bazaar Footer Settings', 'ame-bazaar' ),
