@@ -269,5 +269,173 @@ function ame_bazaar_customize_register( $wp_customize ) {
 			'type'     => 'textarea',
 		) );
 	}
+
+	// Add Section for Trust & Reviews
+	$wp_customize->add_section( 'ame_bazaar_reviews_section', array(
+		'title'       => __( 'AME Bazaar Reviews Settings', 'ame-bazaar' ),
+		'priority'    => 70,
+		'description' => __( 'Configure the Customer Trust & Google Reviews homepage section.', 'ame-bazaar' ),
+	) );
+
+	// Section Title & Subtitle
+	$wp_customize->add_setting( 'ame_bazaar_reviews_section_title', array(
+		'default'           => 'Trusted by Families Across Kirari',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'ame_bazaar_reviews_section_title_control', array(
+		'label'    => __( 'Section Title', 'ame-bazaar' ),
+		'section'  => 'ame_bazaar_reviews_section',
+		'settings' => 'ame_bazaar_reviews_section_title',
+		'type'     => 'text',
+	) );
+
+	$wp_customize->add_setting( 'ame_bazaar_reviews_section_subtitle', array(
+		'default'           => 'Read genuine feedback from customers who choose AME Bazaar for their family fashion needs.',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'ame_bazaar_reviews_section_subtitle_control', array(
+		'label'    => __( 'Section Subtitle', 'ame-bazaar' ),
+		'section'  => 'ame_bazaar_reviews_section',
+		'settings' => 'ame_bazaar_reviews_section_subtitle',
+		'type'     => 'text',
+	) );
+
+	// Google Rating & Reviews count settings
+	$wp_customize->add_setting( 'ame_bazaar_reviews_google_rating', array(
+		'default'           => '4.8',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'ame_bazaar_reviews_google_rating_control', array(
+		'label'    => __( 'Google Star Rating', 'ame-bazaar' ),
+		'section'  => 'ame_bazaar_reviews_section',
+		'settings' => 'ame_bazaar_reviews_google_rating',
+		'type'     => 'text',
+	) );
+
+	$wp_customize->add_setting( 'ame_bazaar_reviews_count', array(
+		'default'           => '100+',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'ame_bazaar_reviews_count_control', array(
+		'label'    => __( 'Total Review Count', 'ame-bazaar' ),
+		'section'  => 'ame_bazaar_reviews_section',
+		'settings' => 'ame_bazaar_reviews_count',
+		'type'     => 'text',
+	) );
+
+	// Define 3 testimonials
+	$testimonials = array(
+		1 => array(
+			'name'  => 'Local Customer',
+			'text'  => 'Great collection of Men\'s wear and kids clothing. Very fair prices and the staff was extremely helpful.',
+			'stars' => '5',
+		),
+		2 => array(
+			'name'  => 'Delhi Shopper',
+			'text'  => 'We got custom tailoring done for our festival coordinates here. The fit was absolutely perfect and completed on time.',
+			'stars' => '5',
+		),
+		3 => array(
+			'name'  => 'Kirari Resident',
+			'text'  => 'One-stop apparel destination for my entire family. Honest recommendations and wonderful local experience.',
+			'stars' => '5',
+		),
+	);
+
+	foreach ( $testimonials as $index => $t ) {
+		// Name
+		$wp_customize->add_setting( 'ame_bazaar_reviews_t' . $index . '_name', array(
+			'default'           => $t['name'],
+			'sanitize_callback' => 'sanitize_text_field',
+			'transport'         => 'refresh',
+		) );
+		$wp_customize->add_control( 'ame_bazaar_reviews_t' . $index . '_name_control', array(
+			'label'    => sprintf( __( 'Testimonial %d Customer Name', 'ame-bazaar' ), $index ),
+			'section'  => 'ame_bazaar_reviews_section',
+			'settings' => 'ame_bazaar_reviews_t' . $index . '_name',
+			'type'     => 'text',
+		) );
+
+		// Text
+		$wp_customize->add_setting( 'ame_bazaar_reviews_t' . $index . '_text', array(
+			'default'           => $t['text'],
+			'sanitize_callback' => 'sanitize_text_field',
+			'transport'         => 'refresh',
+		) );
+		$wp_customize->add_control( 'ame_bazaar_reviews_t' . $index . '_text_control', array(
+			'label'    => sprintf( __( 'Testimonial %d Review Text', 'ame-bazaar' ), $index ),
+			'section'  => 'ame_bazaar_reviews_section',
+			'settings' => 'ame_bazaar_reviews_t' . $index . '_text',
+			'type'     => 'textarea',
+		) );
+
+		// Rating Stars
+		$wp_customize->add_setting( 'ame_bazaar_reviews_t' . $index . '_stars', array(
+			'default'           => $t['stars'],
+			'sanitize_callback' => 'sanitize_text_field',
+			'transport'         => 'refresh',
+		) );
+		$wp_customize->add_control( 'ame_bazaar_reviews_t' . $index . '_stars_control', array(
+			'label'    => sprintf( __( 'Testimonial %d Star Rating (1-5)', 'ame-bazaar' ), $index ),
+			'section'  => 'ame_bazaar_reviews_section',
+			'settings' => 'ame_bazaar_reviews_t' . $index . '_stars',
+			'type'     => 'select',
+			'choices'  => array(
+				'1' => '1 Star',
+				'2' => '2 Stars',
+				'3' => '3 Stars',
+				'4' => '4 Stars',
+				'5' => '5 Stars',
+			),
+		) );
+	}
+
+	// Define 3 trust cards (Family-Owned, Tailoring, Local Trust)
+	$trust_cards = array(
+		1 => array(
+			'title' => 'Family-Owned Store',
+			'desc'  => 'Providing personalized styling support and curated garments for all generations of Kirari families.',
+		),
+		2 => array(
+			'title' => 'Tailoring & Alterations',
+			'desc'  => 'Get custom fits and on-time stitching services directly inside the store.',
+		),
+		3 => array(
+			'title' => 'Local Trust',
+			'desc'  => 'Built on long-term relationships, reliable apparel quality, and honest recommendations.',
+		),
+	);
+
+	foreach ( $trust_cards as $index => $tc ) {
+		// Title
+		$wp_customize->add_setting( 'ame_bazaar_reviews_c' . $index . '_title', array(
+			'default'           => $tc['title'],
+			'sanitize_callback' => 'sanitize_text_field',
+			'transport'         => 'refresh',
+		) );
+		$wp_customize->add_control( 'ame_bazaar_reviews_c' . $index . '_title_control', array(
+			'label'    => sprintf( __( 'Trust Card %d Title', 'ame-bazaar' ), $index ),
+			'section'  => 'ame_bazaar_reviews_section',
+			'settings' => 'ame_bazaar_reviews_c' . $index . '_title',
+			'type'     => 'text',
+		) );
+
+		// Desc
+		$wp_customize->add_setting( 'ame_bazaar_reviews_c' . $index . '_desc', array(
+			'default'           => $tc['desc'],
+			'sanitize_callback' => 'sanitize_text_field',
+			'transport'         => 'refresh',
+		) );
+		$wp_customize->add_control( 'ame_bazaar_reviews_c' . $index . '_desc_control', array(
+			'label'    => sprintf( __( 'Trust Card %d Description', 'ame-bazaar' ), $index ),
+			'section'  => 'ame_bazaar_reviews_section',
+			'settings' => 'ame_bazaar_reviews_c' . $index . '_desc',
+			'type'     => 'textarea',
+		) );
+	}
 }
 add_action( 'customize_register', 'ame_bazaar_customize_register' );
