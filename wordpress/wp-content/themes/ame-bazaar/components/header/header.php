@@ -15,13 +15,6 @@ $phone_tel_link = preg_replace( '/[^0-9+]/', '', $phone_number );
 $maps_url = get_theme_mod( 'ame_bazaar_maps_url', 'https://maps.google.com/?q=AME+Bazaar+Kirari+Delhi' );
 ?>
 
-<!-- Announcement Bar: Premium minimal look -->
-<div class="ame-announcement-bar">
-	<div class="ame-bazaar-container">
-		<span class="ame-announcement-text"><?php esc_html_e( 'Premium Family Fashion & Apparel • Kirari, Delhi', 'ame-bazaar' ); ?></span>
-	</div>
-</div>
-
 <!-- Main Sticky Navigation Header -->
 <div class="ame-header-main-wrapper">
 	<div class="ame-bazaar-container ame-header-inner">
@@ -80,7 +73,7 @@ $maps_url = get_theme_mod( 'ame_bazaar_maps_url', 'https://maps.google.com/?q=AM
 		<!-- Right: Action Icons & Call Buttons -->
 		<div class="ame-header-actions">
 			<!-- Search Icon Button -->
-			<button class="ame-action-btn ame-search-toggle" id="ame-search-open-btn" aria-expanded="false" aria-controls="ame-search-overlay-container" aria-label="<?php esc_attr_e( 'Search site', 'ame-bazaar' ); ?>">
+			<button class="ame-action-btn ame-search-toggle" id="ame-search-open-btn" aria-label="<?php esc_attr_e( 'Search site', 'ame-bazaar' ); ?>">
 				<svg class="ame-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 					<circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
 				</svg>
@@ -94,11 +87,10 @@ $maps_url = get_theme_mod( 'ame_bazaar_maps_url', 'https://maps.google.com/?q=AM
 			</a>
 
 			<!-- Future Cart Placeholder -->
-			<a href="#" class="ame-action-btn ame-cart-link" aria-label="<?php esc_attr_e( 'Shopping Cart, 0 items (Future Integration)', 'ame-bazaar' ); ?>">
+			<a href="#" class="ame-action-btn ame-cart-link" aria-label="<?php esc_attr_e( 'Shopping Cart (Future Integration)', 'ame-bazaar' ); ?>">
 				<svg class="ame-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 					<path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path>
 				</svg>
-				<span class="ame-cart-badge" aria-hidden="true">0</span>
 			</a>
 
 			<!-- Call Now Button -->
@@ -118,30 +110,6 @@ $maps_url = get_theme_mod( 'ame_bazaar_maps_url', 'https://maps.google.com/?q=AM
 			</a>
 		</div>
 
-	</div>
-</div>
-
-<!-- Full Screen Overlay Search -->
-<div class="ame-search-overlay" id="ame-search-overlay-container" role="dialog" aria-modal="true" aria-label="<?php esc_attr_e( 'Search Form Overlay', 'ame-bazaar' ); ?>">
-	<div class="ame-search-overlay-inner">
-		<button class="ame-search-close-btn" id="ame-search-close-btn" aria-label="<?php esc_attr_e( 'Close search', 'ame-bazaar' ); ?>">
-			<svg class="ame-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-				<line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
-			</svg>
-		</button>
-		<div class="ame-search-form-wrapper">
-			<form role="search" method="get" class="ame-search-overlay-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-				<label class="ame-search-label" for="ame-search-input-field">
-					<span class="screen-reader-text"><?php esc_html_e( 'Search for:', 'ame-bazaar' ); ?></span>
-				</label>
-				<input type="search" id="ame-search-input-field" class="ame-search-input" placeholder="<?php esc_attr_e( 'Search products, collections, articles...', 'ame-bazaar' ); ?>" value="<?php echo get_search_query(); ?>" name="s" required />
-				<button type="submit" class="ame-search-submit-btn" aria-label="<?php esc_attr_e( 'Submit search', 'ame-bazaar' ); ?>">
-					<svg class="ame-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-						<circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-					</svg>
-				</button>
-			</form>
-		</div>
 	</div>
 </div>
 
@@ -205,7 +173,7 @@ $maps_url = get_theme_mod( 'ame_bazaar_maps_url', 'https://maps.google.com/?q=AM
 			?>
 		</nav>
 
-		<!-- Drawer Footer with CTAs & Contact Details -->
+		<!-- Drawer Footer with CTAs -->
 		<div class="ame-mobile-drawer-footer">
 			<div class="ame-mobile-ctas">
 				<a href="tel:<?php echo esc_attr( $phone_tel_link ); ?>" class="ame-bazaar-btn ame-bazaar-btn--secondary ame-btn-mobile-call">
@@ -221,11 +189,6 @@ $maps_url = get_theme_mod( 'ame_bazaar_maps_url', 'https://maps.google.com/?q=AM
 					</svg>
 					<span><?php esc_html_e( 'Visit Store', 'ame-bazaar' ); ?></span>
 				</a>
-			</div>
-			
-			<div class="ame-mobile-store-info">
-				<p class="ame-store-address"><strong><?php esc_html_e( 'Address:', 'ame-bazaar' ); ?></strong> <?php esc_html_e( 'Kirari, Delhi', 'ame-bazaar' ); ?></p>
-				<p class="ame-store-hours"><strong><?php esc_html_e( 'Store Hours:', 'ame-bazaar' ); ?></strong> <?php esc_html_e( '10:00 AM - 09:00 PM', 'ame-bazaar' ); ?></p>
 			</div>
 		</div>
 

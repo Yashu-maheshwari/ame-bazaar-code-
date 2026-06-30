@@ -9,10 +9,6 @@
 	const menuDrawer = document.getElementById('ame-mobile-menu-drawer');
 	const menuClose = document.getElementById('ame-menu-close-btn');
 	const menuOverlayBg = document.getElementById('ame-menu-overlay-bg');
-	const searchToggle = document.getElementById('ame-search-open-btn');
-	const searchOverlay = document.getElementById('ame-search-overlay-container');
-	const searchClose = document.getElementById('ame-search-close-btn');
-	const searchInput = document.getElementById('ame-search-input-field');
 
 	// Active focus trap targets
 	let focusTrapCleanup = null;
@@ -112,50 +108,12 @@
 	if (menuOverlayBg) menuOverlayBg.addEventListener('click', closeMenu);
 
 	/* ==========================================================================
-	   4. SEARCH OVERLAY CONTROLS
-	   ========================================================================== */
-	const openSearch = () => {
-		if (!searchOverlay || !searchToggle) return;
-		searchOverlay.classList.add('is-active');
-		searchToggle.setAttribute('aria-expanded', 'true');
-		document.body.style.overflow = 'hidden';
-
-		// Trap focus inside search overlay
-		if (focusTrapCleanup) focusTrapCleanup();
-		focusTrapCleanup = createFocusTrap(searchOverlay);
-
-		// Autofocus the search field
-		if (searchInput) {
-			setTimeout(() => searchInput.focus(), 150);
-		}
-	};
-
-	const closeSearch = () => {
-		if (!searchOverlay || !searchToggle) return;
-		searchOverlay.classList.remove('is-active');
-		searchToggle.setAttribute('aria-expanded', 'false');
-		document.body.style.overflow = '';
-
-		// Clean up focus trap
-		if (focusTrapCleanup) {
-			focusTrapCleanup();
-			focusTrapCleanup = null;
-		}
-	};
-
-	if (searchToggle) searchToggle.addEventListener('click', openSearch);
-	if (searchClose) searchClose.addEventListener('click', closeSearch);
-
-	/* ==========================================================================
-	   5. GLOBAL KEYBOARD LISTENERS (ESC key close)
+	   4. GLOBAL KEYBOARD LISTENERS (ESC key close)
 	   ========================================================================== */
 	document.addEventListener('keydown', (e) => {
 		if (e.key === 'Escape') {
 			if (menuDrawer && menuDrawer.classList.contains('is-active')) {
 				closeMenu();
-			}
-			if (searchOverlay && searchOverlay.classList.contains('is-active')) {
-				closeSearch();
 			}
 		}
 	});

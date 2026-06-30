@@ -19,16 +19,9 @@ function ame_bazaar_enqueue_assets() {
 	$parent_style_version = wp_get_theme( get_template() )->get( 'Version' );
 
 	wp_enqueue_style(
-		'ame-bazaar-fonts',
-		'https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap',
-		array(),
-		null
-	);
-
-	wp_enqueue_style(
 		'ame-bazaar-parent-style',
 		get_template_directory_uri() . '/style.css',
-		array( 'ame-bazaar-fonts' ),
+		array(),
 		$parent_style_version
 	);
 
