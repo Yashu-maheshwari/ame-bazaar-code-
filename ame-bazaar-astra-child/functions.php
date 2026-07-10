@@ -16,5 +16,6 @@ define( 'AME_BAZAAR_URI', get_stylesheet_directory_uri() );
 require_once AME_BAZAAR_PATH . '/inc/setup.php';
 require_once AME_BAZAAR_PATH . '/inc/enqueue.php';
 require_once AME_BAZAAR_PATH . '/inc/helpers.php';
+require_once AME_BAZAAR_PATH . '/inc/admin-settings.php';
 require_once AME_BAZAAR_PATH . '/inc/schema.php';
 require_once AME_BAZAAR_PATH . '/inc/security.php';
