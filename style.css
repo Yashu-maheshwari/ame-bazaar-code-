@@ -1,0 +1,64 @@
+/*
+Theme Name: AME Bazaar Child Theme
+Theme URI: https://github.com/Yashu-maheshwari/ame-bazaar-code-
+Description: Astra child theme foundation for AME Bazaar.
+Author: Yashu Maheshwari
+Template: astra
+Version: 0.1.0
+Text Domain: ame-bazaar-child
+Requires at least: 6.0
+Tested up to: 6.5
+Requires PHP: 8.0
+*/
+
+:root {
+	color-scheme: light;
+	--ame-bazaar-text: #1f2937;
+	--ame-bazaar-bg: #ffffff;
+	--ame-bazaar-accent: #0f766e;
+	--ame-bazaar-accent-dark: #115e59;
+	--ame-bazaar-border: #d1d5db;
+	--ame-bazaar-focus: #1d4ed8;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	background: var(--ame-bazaar-bg);
+	color: var(--ame-bazaar-text);
+}
+
+a {
+	color: var(--ame-bazaar-accent);
+	text-underline-offset: 0.15em;
+}
+
+a:hover,
+a:focus-visible {
+	color: var(--ame-bazaar-accent-dark);
+}
+
+:focus-visible {
+	outline: 2px solid var(--ame-bazaar-focus);
+	outline-offset: 3px;
+}
+
+img {
+	height: auto;
+	max-width: 100%;
+}
+
+.screen-reader-text:focus {
+	background: #fff;
+	clip: auto;
+	clip-path: none;
+	height: auto;
+	left: 0.5rem;
+	padding: 0.75rem 1rem;
+	position: absolute;
+	top: 0.5rem;
+	width: auto;
+	z-index: 9999;
+}
